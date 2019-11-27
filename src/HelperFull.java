@@ -2,14 +2,12 @@ import processing.core.PImage;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class OctoFull extends Octo{
+public class HelperFull extends Helper {
 
-    public OctoFull(String id, Point position,
-                   List<PImage> images, int resourceLimit,
-                   int actionPeriod, int animationPeriod)
+    public HelperFull(String id, Point position,
+                      List<PImage> images, int resourceLimit,
+                      int actionPeriod, int animationPeriod)
     {
         super(id, position, images,resourceLimit, actionPeriod, animationPeriod);
     }
@@ -40,7 +38,7 @@ public class OctoFull extends Octo{
     protected boolean transform(WorldModel world,
                               EventScheduler scheduler, ImageStore imageStore)
     {
-        OctoNotFull octo = getPosition().createOctoNotFull(getId(), this.getResourceLimit(),
+        HelperNotFull octo = getPosition().createOctoNotFull(getId(), this.getResourceLimit(),
                 getPosition(), getActionPeriod(), getAnimationPeriod(),
                 getImages());
 
