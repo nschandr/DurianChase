@@ -130,4 +130,10 @@ final class Point
    {
       return new SGrass(id, position, images, actionPeriod);
    }
+   public MainCollector createMainCollector(String id, Point position,
+                                            List<PImage> images)
+   {
+      return new MainCollector(id, position, images);
+   }
+
 }

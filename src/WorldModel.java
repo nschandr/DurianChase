@@ -11,9 +11,11 @@ final class WorldModel
 {
    public static final Random rand = new Random();
 
-   public static final String MAIN_KEY = "main collector";
+   public static final String MAIN_KEY = "collector";
+   public static final int MAIN_NUM_PROPERTIES = 4;
    public static final int MAIN_ID = 1;
-
+   public static final int MAIN_COL = 2;
+   public static final int MAIN_ROW = 3;
 
    public static final String OCTO_KEY = "octo";
    public static final int OCTO_NUM_PROPERTIES = 7;
@@ -400,6 +402,20 @@ final class WorldModel
 
       return properties.length == SGRASS_NUM_PROPERTIES;
    }
+   public boolean parseMainCollector(String [] properties, WorldModel world,
+                                     ImageStore imageStore)
+   {
+      if (properties.length == MAIN_NUM_PROPERTIES)
+      {
+         Point pt = new Point(Integer.parseInt(properties[MAIN_COL]),
+                 Integer.parseInt(properties[MAIN_ROW]));
+         Entity entity = pt.createObstacle(properties[MAIN_ID],
+                 pt, imageStore.getImageList(MAIN_KEY));
+         world.tryAddEntity(entity);
+      }
+
+      return properties.length == SGRASS_NUM_PROPERTIES;
+   }
    public void load(Scanner in, WorldModel world, ImageStore imageStore)
    {
       int lineNumber = 0;
@@ -447,6 +463,8 @@ final class WorldModel
                return parseAtlantis(properties, world, imageStore);
             case SGRASS_KEY:
                return parseSgrass(properties, world, imageStore);
+            case MAIN_KEY:
+               return parseMainCollector(properties, world, imageStore);
          }
       }
 
