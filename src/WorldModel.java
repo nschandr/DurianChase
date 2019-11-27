@@ -414,7 +414,7 @@ final class WorldModel
          world.tryAddEntity(entity);
       }
 
-      return properties.length == SGRASS_NUM_PROPERTIES;
+      return properties.length == MAIN_NUM_PROPERTIES;
    }
    public void load(Scanner in, WorldModel world, ImageStore imageStore)
    {

@@ -5,9 +5,8 @@ import java.util.List;
 //1. Find a way to instantiate one main character
 //2. keyPressed in VirtualWorld to move main character. link them
 
-// Singleton
+
 public class MainCollector extends Entity{
-    private static MainCollector single_instance = null;
 
     public MainCollector(String id, Point position, List<PImage> images) {
         super(id, position, images);
