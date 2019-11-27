@@ -11,6 +11,10 @@ final class WorldModel
 {
    public static final Random rand = new Random();
 
+   public static final String MAIN_KEY = "main collector";
+   public static final int MAIN_ID = 1;
+
+
    public static final String OCTO_KEY = "octo";
    public static final int OCTO_NUM_PROPERTIES = 7;
    public static final int OCTO_ID = 1;
