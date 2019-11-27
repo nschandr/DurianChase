@@ -86,19 +86,19 @@ final class Point
       return new Atlantis(id, position, images, 0, 0);
    }
 
-   public OctoFull createOctoFull(String id, int resourceLimit,
-                                       Point position, int actionPeriod, int animationPeriod,
-                                       List<PImage> images)
+   public HelperFull createOctoFull(String id, int resourceLimit,
+                                    Point position, int actionPeriod, int animationPeriod,
+                                    List<PImage> images)
    {
-      return new OctoFull(id, position, images,
+      return new HelperFull(id, position, images,
               resourceLimit, actionPeriod, animationPeriod);
    }
 
-   public OctoNotFull createOctoNotFull(String id, int resourceLimit,
+   public HelperNotFull createOctoNotFull(String id, int resourceLimit,
                                           Point position, int actionPeriod, int animationPeriod,
                                           List<PImage> images)
    {
-      return new OctoNotFull(id, position, images,
+      return new HelperNotFull(id, position, images,
               resourceLimit, 0, actionPeriod, animationPeriod);
    }
 

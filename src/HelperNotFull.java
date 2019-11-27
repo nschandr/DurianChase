@@ -2,15 +2,13 @@ import processing.core.PImage;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class OctoNotFull extends Octo{
+public class HelperNotFull extends Helper {
     private int resourceCount;
 
-    public OctoNotFull(String id, Point position,
-                    List<PImage> images, int resourceLimit, int resourceCount,
-                    int actionPeriod, int animationPeriod)
+    public HelperNotFull(String id, Point position,
+                         List<PImage> images, int resourceLimit, int resourceCount,
+                         int actionPeriod, int animationPeriod)
     {
         super(id, position, images, resourceLimit, actionPeriod, animationPeriod);
         this.resourceCount = resourceCount;
@@ -35,7 +33,7 @@ public class OctoNotFull extends Octo{
     {
         if (this.resourceCount >= this.getResourceLimit())
         {
-            OctoFull octo = getPosition().createOctoFull(getId(), this.getResourceLimit(),
+            HelperFull octo = getPosition().createOctoFull(getId(), this.getResourceLimit(),
                     getPosition(), getActionPeriod(), getAnimationPeriod(),
                     getImages());
 
