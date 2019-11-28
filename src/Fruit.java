@@ -23,16 +23,13 @@ public class Fruit extends ActiveEntity{
         world.removeEntity(this);
         scheduler.unscheduleAllEvents(this);
 
-        Bear crab = pos.createCrab(getId() + CRAB_ID_SUFFIX,
+        Bear bear = pos.createCrab(getId() + CRAB_ID_SUFFIX,
                 pos, getActionPeriod() / CRAB_PERIOD_SCALE,
                 CRAB_ANIMATION_MIN +
                         Functions.rand.nextInt(CRAB_ANIMATION_MAX - CRAB_ANIMATION_MIN),
                 imageStore.getImageList(CRAB_KEY));
 
-        world.addEntity(crab);
-        crab.scheduleActions(scheduler, world, imageStore);
+        world.addEntity(bear);
+        bear.scheduleActions(scheduler, world, imageStore);
     }
-
-
-
 }

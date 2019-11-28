@@ -14,14 +14,14 @@ public class Bear extends Moves{
 
     protected void executeActivity(WorldModel world,
                                     ImageStore imageStore, EventScheduler scheduler) {
-        Optional<Entity> crabTarget = world.findNearest(
-                getPosition(), Tree.class);
+        Optional<Entity> bearTarget = world.findNearest(
+                getPosition(), Fruit.class);
         long nextPeriod = getActionPeriod();
 
-        if (crabTarget.isPresent()) {
-            Point tgtPos = crabTarget.get().getPosition();
+        if (bearTarget.isPresent()) {
+            Point tgtPos = bearTarget.get().getPosition();
 
-            if (moveTo(world, crabTarget.get(), scheduler)) {
+            if (moveTo(world, bearTarget.get(), scheduler)) {
                 Quake quake = tgtPos.createQuake(tgtPos,
                         imageStore.getImageList(QUAKE_KEY));
 
