@@ -115,7 +115,8 @@ public final class VirtualWorld
          }
 //         view.shiftView(dx, dy);
          Point pt = new Point (dx, dy);
-//         MainCollector main = MainCollector.
+         MainCollector collector = MainCollector.getInstance();
+         collector.executeActivity(pt, world, scheduler);
       }
    }
 

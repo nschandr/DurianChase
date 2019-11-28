@@ -9,6 +9,7 @@ public class Fruit extends ActiveEntity{
     public static final int CRAB_ANIMATION_MIN = 50;
     public static final int CRAB_ANIMATION_MAX = 150;
 
+
     public Fruit(String id, Point position,
                  List<PImage> images, int actionPeriod)
     {
