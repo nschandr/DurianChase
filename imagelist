@@ -17,7 +17,7 @@ crab images/bear.png 255 255 255 128
 crab images/bear.png 255 255 255 128
 crab images/bear.png 255 255 255 128
 crab images/bear.png 255 255 255 128
-sea images/sea.bmp 255 255 255 0
+sea images/forest.bmp 255 255 255 0
 octo images/helper1.png 0 0 0 0
 octo images/helper1.png 0 0 0 0
 octo images/helper1.png 0 0 0 0
@@ -31,7 +31,7 @@ quake images/quake3.bmp 255 255 255 0
 quake images/quake4.bmp 255 255 255 0
 quake images/quake5.bmp 255 255 255 0
 quake images/quake6.bmp 255 255 255 0
-bubbles images/bubbles.bmp
+bubbles images/leaf.png
 seaGrass images/tree.png 255 255 255 0
 background_default images/none.bmp
 collector images/collector.png

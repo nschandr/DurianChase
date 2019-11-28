@@ -117,6 +117,25 @@ public final class VirtualWorld
       }
    }
 
+   public void mouseClicked() {
+      int tileX = mouseX/TILE_WIDTH;
+      int tileY = mouseY/TILE_HEIGHT;
+      int currentTileX = tileX + view.getViewport().getCol();
+      int currentTileY = tileY + view.getViewport().getRow();
+      Point tile = new Point(currentTileX, currentTileY);
+      String leavesGround = "bubbles";
+      Background leaves = new Background(leavesGround, imageStore.getImageList(leavesGround));
+      world.setBackground(tile, leaves);
+      world.setBackground(new Point(tile.x + 1, tile.y), leaves);
+      world.setBackground(new Point(tile.x - 1, tile.y), leaves);
+      world.setBackground(new Point(tile.x, tile.y + 1), leaves);
+      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
+      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
+      world.setBackground(new Point(tile.x + 1, tile.y - 1), leaves);
+      world.setBackground(new Point(tile.x - 1, tile.y + 1), leaves);
+      world.removeEntityAt(tile);
+   }
+
    public Background createDefaultBackground(ImageStore imageStore)
    {
       return new Background(DEFAULT_IMAGE_NAME,
