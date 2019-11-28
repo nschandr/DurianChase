@@ -2,11 +2,11 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class Atlantis extends Stationary{
+public class Basket extends Stationary{
     public static final int ATLANTIS_ANIMATION_REPEAT_COUNT = 7;
 
-    public Atlantis(String id, Point position,
-                    List<PImage> images, int actionPeriod, int animationPeriod)
+    public Basket(String id, Point position,
+                  List<PImage> images, int actionPeriod, int animationPeriod)
     {
         super(id, position,images,actionPeriod,animationPeriod);
     }

@@ -80,10 +80,10 @@ final class Point
       return result;
    }
 
-   public Atlantis createAtlantis(String id, Point position,
-                                       List<PImage> images)
+   public Basket createAtlantis(String id, Point position,
+                                List<PImage> images)
    {
-      return new Atlantis(id, position, images, 0, 0);
+      return new Basket(id, position, images, 0, 0);
    }
 
    public HelperFull createOctoFull(String id, int resourceLimit,

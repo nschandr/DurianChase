@@ -16,7 +16,7 @@ public class HelperFull extends Helper {
                                         ImageStore imageStore, EventScheduler scheduler)
     {
         Optional<Entity> fullTarget = world.findNearest(getPosition(),
-                 Atlantis.class);
+                 Basket.class);
 
         if (fullTarget.isPresent() &&
                 moveTo(world, fullTarget.get(), scheduler))
