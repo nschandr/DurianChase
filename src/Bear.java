@@ -2,14 +2,12 @@ import processing.core.PImage;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class Crab extends Moves{
+public class Bear extends Moves{
 
     public static final String QUAKE_KEY = "quake";
 
-    public Crab(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod)
+    public Bear(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod)
     {
         super(id, position, images, actionPeriod, animationPeriod);
     }
@@ -17,7 +15,7 @@ public class Crab extends Moves{
     protected void executeActivity(WorldModel world,
                                     ImageStore imageStore, EventScheduler scheduler) {
         Optional<Entity> crabTarget = world.findNearest(
-                getPosition(), SGrass.class);
+                getPosition(), Tree.class);
         long nextPeriod = getActionPeriod();
 
         if (crabTarget.isPresent()) {

@@ -18,7 +18,7 @@ public class HelperNotFull extends Helper {
                                            EventScheduler scheduler)
     {
         Optional<Entity> notFullTarget = world.findNearest(getPosition(),
-                Fish.class);
+                Fruit.class);
         if (!notFullTarget.isPresent() ||
                 !moveTo(world, notFullTarget.get(), scheduler) ||
                 !transform(world, scheduler, imageStore))

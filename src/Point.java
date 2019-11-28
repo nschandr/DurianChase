@@ -108,27 +108,27 @@ final class Point
       return new Obstacle(id, position, images);
    }
 
-   public Fish createFish(String id, Point position, int actionPeriod,
-                                   List<PImage> images)
+   public Fruit createFish(String id, Point position, int actionPeriod,
+                           List<PImage> images)
    {
-      return new Fish(id, position, images,
+      return new Fruit(id, position, images,
               actionPeriod);
    }
 
-   public Crab createCrab(String id, Point position,
-                                   int actionPeriod, int animationPeriod, List<PImage> images)
+   public Bear createCrab(String id, Point position,
+                          int actionPeriod, int animationPeriod, List<PImage> images)
    {
-      return new Crab(id, position, images, actionPeriod, animationPeriod);
+      return new Bear(id, position, images, actionPeriod, animationPeriod);
    }
 
    public Quake createQuake(Point position, List<PImage> images)
    {
       return new Quake(QUAKE_ID, position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
    }
-   public SGrass createSgrass(String id, Point position, int actionPeriod,
-                                     List<PImage> images)
+   public Tree createSgrass(String id, Point position, int actionPeriod,
+                            List<PImage> images)
    {
-      return new SGrass(id, position, images, actionPeriod);
+      return new Tree(id, position, images, actionPeriod);
    }
    public MainCollector createMainCollector(String id, Point position,
                                             List<PImage> images)
