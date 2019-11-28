@@ -51,7 +51,7 @@ public class HelperNotFull extends Helper {
 
     protected boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler)
     {
-        if (adjacent(getPosition(), target.getPosition()))
+        if (getPosition().adjacent(target.getPosition()))
         {
             this.resourceCount += 1;
             world.removeEntity(target);

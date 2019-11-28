@@ -409,8 +409,9 @@ final class WorldModel
       {
          Point pt = new Point(Integer.parseInt(properties[MAIN_COL]),
                  Integer.parseInt(properties[MAIN_ROW]));
-         Entity entity = pt.createObstacle(properties[MAIN_ID],
+         Entity entity = MainCollector.createInstance(properties[MAIN_ID],
                  pt, imageStore.getImageList(MAIN_KEY));
+
          world.tryAddEntity(entity);
       }
 
