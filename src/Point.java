@@ -130,10 +130,11 @@ final class Point
    {
       return new Tree(id, position, images, actionPeriod);
    }
-   public MainCollector createMainCollector(String id, Point position,
-                                            List<PImage> images)
-   {
-      return new MainCollector(id, position, images);
-   }
 
+
+   public boolean adjacent(Point p2)
+   {
+       return (x == p2.x && Math.abs(y - p2.y) == 1) ||
+               (y == p2.y && Math.abs(x - p2.x) == 1);
+   }
 }

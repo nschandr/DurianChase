@@ -36,7 +36,7 @@ public class Bear extends Moves{
     }
     protected boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler)
     {
-        if (adjacent(this.getPosition(), target.getPosition()))
+        if (this.getPosition().adjacent(target.getPosition()))
         {
             world.removeEntity(target);
             scheduler.unscheduleAllEvents(target);

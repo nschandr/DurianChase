@@ -113,7 +113,9 @@ public final class VirtualWorld
                dx = 1;
                break;
          }
-         view.shiftView(dx, dy);
+//         view.shiftView(dx, dy);
+         Point pt = new Point (dx, dy);
+//         MainCollector main = MainCollector.
       }
    }
 
@@ -188,7 +190,7 @@ public final class VirtualWorld
       for (Entity entity : world.getEntities())
       {
          //Only start actions for entities that include action (not those with just animations)
-         if (entity instanceof Obstacle){continue;}
+         if (entity instanceof Obstacle|| entity instanceof MainCollector){continue;}
          else if  (((ActiveEntity)entity).getActionPeriod() > 0)
             ((ActiveEntity)entity).scheduleActions(scheduler, world, imageStore);
       }

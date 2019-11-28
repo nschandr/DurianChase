@@ -53,7 +53,7 @@ public class HelperFull extends Helper {
     protected boolean moveTo(WorldModel world,
                               Entity target, EventScheduler scheduler)
     {
-        if (adjacent(this.getPosition(), target.getPosition()))
+        if (this.getPosition().adjacent(target.getPosition()))
         {
             return true;
         }
