@@ -124,7 +124,6 @@ public final class VirtualWorld
                dx = 1;
                break;
          }
-//         view.shiftView(dx, dy);
          Point pt = new Point (dx, dy);
          MainCollector collector = MainCollector.getInstance();
          collector.executeActivity(pt, world, scheduler);
@@ -138,16 +137,17 @@ public final class VirtualWorld
       int currentTileY = tileY + view.getViewport().getRow();
       Point tile = new Point(currentTileX, currentTileY);
       String leavesGround = "bubbles";
-      Background leaves = new Background(leavesGround, imageStore.getImageList(leavesGround));
-      world.setBackground(tile, leaves);
-      world.setBackground(new Point(tile.x + 1, tile.y), leaves);
-      world.setBackground(new Point(tile.x - 1, tile.y), leaves);
-      world.setBackground(new Point(tile.x, tile.y + 1), leaves);
-      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
-      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
-      world.setBackground(new Point(tile.x + 1, tile.y - 1), leaves);
-      world.setBackground(new Point(tile.x - 1, tile.y + 1), leaves);
-      world.removeEntityAt(tile);
+      Obstacle.clicked("leaves", tile, imageStore.getImageList(leavesGround), world);
+//      Background leaves = new Background(leavesGround, imageStore.getImageList(leavesGround));
+//      world.setBackground(tile, leaves);
+//      world.setBackground(new Point(tile.x + 1, tile.y), leaves);
+//      world.setBackground(new Point(tile.x - 1, tile.y), leaves);
+//      world.setBackground(new Point(tile.x, tile.y + 1), leaves);
+//      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
+//      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
+//      world.setBackground(new Point(tile.x + 1, tile.y - 1), leaves);
+//      world.setBackground(new Point(tile.x - 1, tile.y + 1), leaves);
+//      world.removeEntityAt(tile);
    }
 
    public Background createDefaultBackground(ImageStore imageStore)

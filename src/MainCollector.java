@@ -1,15 +1,7 @@
 import processing.core.PImage;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
-//TODO
-//remove fruits that are adjacent to collector. currently removes anything.
-
-
 
 public class MainCollector extends Entity{
     private int fruitCount = 0;
