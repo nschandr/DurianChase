@@ -5,7 +5,7 @@ import java.util.List;
 public class Fruit extends ActiveEntity{
     public static final String CRAB_KEY = "crab";
     public static final String CRAB_ID_SUFFIX = " -- crab";
-    public static final int CRAB_PERIOD_SCALE = 4;
+    public static final int CRAB_PERIOD_SCALE = 50;
     public static final int CRAB_ANIMATION_MIN = 50;
     public static final int CRAB_ANIMATION_MAX = 150;
 

@@ -1,9 +1,9 @@
 collector main_1 0 0
 octo octo_6_3 6 3 2 813 100
 octo octo_5_6 5 6 2 992 100
-seaGrass seaGrass_7_11 7 11 9377
-seaGrass seaGrass_8_11 8 11 13146
-seaGrass seaGrass_6_11 6 11 15026
+seaGrass seaGrass_7_11 7 4 9377
+seaGrass seaGrass_8_11 8 10 13146
+seaGrass seaGrass_6_11 6 20 15026
 atlantis atlantis_0_29 0 29
 atlantis atlantis_19_29 19 29
 atlantis atlantis_39_29 39 29
@@ -15,10 +15,10 @@ atlantis atlantis_0_11 0 11
 seaGrass seaGrass_33_11 11 11 10278
 seaGrass seaGrass_33_13 13 13 10865
 seaGrass seaGrass_33_3 3 3 11101
-seaGrass seaGrass_27_6 6 6 9456
-seaGrass seaGrass_28_23 18 18 13422
+seaGrass seaGrass_27_6 18 6 9456
+seaGrass seaGrass_28_23 18 5 13422
 seaGrass seaGrass_34_19 20 19 11702
-seaGrass seaGrass_21_20 21 20 9294
+seaGrass seaGrass_21_20 21 10 9294
 obstacle obstacle_5_20 5 20
 obstacle obstacle_7_21 7 21
 obstacle obstacle_12_22 12 22
