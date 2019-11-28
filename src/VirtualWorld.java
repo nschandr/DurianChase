@@ -12,6 +12,17 @@ It keeps track of data necessary to use Processing for drawing but also keeps tr
 components to make our world run (eventScheduler), the data in our world (WorldModel) and our
 current view (think virtual camera) into that world (WorldView)
  */
+/*TODO
+   1. World-changing event: effect
+      a. Bear changes in behaviour by moving twice as fast.
+      b. Bear changes in appearance by animating?
+   2. World-changing event: new entity
+      a. helper collector emerges from a pile of leaves
+   3. (EC) Implement new pathing algorithm. Perhaps for helper collector?
+   4. Factory Design Pattern
+   5. Scoreboard.
+
+ */
 
 public final class VirtualWorld
    extends PApplet

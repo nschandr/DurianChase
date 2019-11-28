@@ -37,7 +37,6 @@ public class MainCollector extends Entity{
         {
             Optional<Entity> collectorTarget = world.findNearest(getPosition(),
                     Fruit.class);
-            Optional<Entity> occupant = world.getOccupant(nextPos);
             if (collectorTarget.isPresent() && getPosition().adjacent(collectorTarget.get().getPosition()))
             {
                 world.removeEntity(collectorTarget.get());
