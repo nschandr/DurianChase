@@ -38,7 +38,7 @@ public class HelperFull extends Helper {
     protected boolean transform(WorldModel world,
                               EventScheduler scheduler, ImageStore imageStore)
     {
-        HelperNotFull octo = getPosition().createOctoNotFull(getId(), this.getResourceLimit(),
+        HelperNotFull octo = getPosition().createHelperNotFull(getId(), this.getResourceLimit(),
                 getPosition(), getActionPeriod(), getAnimationPeriod(),
                 getImages());
 

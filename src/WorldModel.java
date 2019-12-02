@@ -321,24 +321,24 @@ final class WorldModel
       return properties.length == BGND_NUM_PROPERTIES;
    }
 
-   public boolean parseOcto(String [] properties, WorldModel world,
-                                   ImageStore imageStore)
-   {
-      if (properties.length == OCTO_NUM_PROPERTIES)
-      {
-         Point pt = new Point(Integer.parseInt(properties[OCTO_COL]),
-                 Integer.parseInt(properties[OCTO_ROW]));
-         Entity entity = pt.createOctoNotFull(properties[OCTO_ID],
-                 Integer.parseInt(properties[OCTO_LIMIT]),
-                 pt,
-                 Integer.parseInt(properties[OCTO_ACTION_PERIOD]),
-                 Integer.parseInt(properties[OCTO_ANIMATION_PERIOD]),
-                 imageStore.getImageList(OCTO_KEY));
-         world.tryAddEntity(entity);
-      }
-
-      return properties.length == OCTO_NUM_PROPERTIES;
-   }
+//   public boolean parseOcto(String [] properties, WorldModel world,
+//                                   ImageStore imageStore)
+//   {
+//      if (properties.length == OCTO_NUM_PROPERTIES)
+//      {
+//         Point pt = new Point(Integer.parseInt(properties[OCTO_COL]),
+//                 Integer.parseInt(properties[OCTO_ROW]));
+//         Entity entity = pt.createHelperNotFull(properties[OCTO_ID],
+//                 Integer.parseInt(properties[OCTO_LIMIT]),
+//                 pt,
+//                 Integer.parseInt(properties[OCTO_ACTION_PERIOD]),
+//                 Integer.parseInt(properties[OCTO_ANIMATION_PERIOD]),
+//                 imageStore.getImageList(OCTO_KEY));
+//         world.tryAddEntity(entity);
+//      }
+//
+//      return properties.length == OCTO_NUM_PROPERTIES;
+//   }
 
    public boolean parseObstacle(String [] properties, WorldModel world,
                                        ImageStore imageStore)
@@ -455,8 +455,8 @@ final class WorldModel
          {
             case BGND_KEY:
                return parseBackground(properties, world, imageStore);
-            case OCTO_KEY:
-               return parseOcto(properties, world, imageStore);
+//            case OCTO_KEY:
+//               return parseOcto(properties, world, imageStore);
             case OBSTACLE_KEY:
                return parseObstacle(properties, world, imageStore);
             case FISH_KEY:

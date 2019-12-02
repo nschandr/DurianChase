@@ -94,9 +94,9 @@ final class Point
               resourceLimit, actionPeriod, animationPeriod);
    }
 
-   public HelperNotFull createOctoNotFull(String id, int resourceLimit,
-                                          Point position, int actionPeriod, int animationPeriod,
-                                          List<PImage> images)
+   public HelperNotFull createHelperNotFull(String id, int resourceLimit,
+                                            Point position, int actionPeriod, int animationPeriod,
+                                            List<PImage> images)
    {
       return new HelperNotFull(id, position, images,
               resourceLimit, 0, actionPeriod, animationPeriod);

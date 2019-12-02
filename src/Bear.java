@@ -2,6 +2,8 @@ import processing.core.PImage;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 public class Bear extends Moves{
 
@@ -58,5 +60,14 @@ public class Bear extends Moves{
             }
             return false;
         }
+    }
+    protected Point nextPosition(WorldModel world,
+                                 Point destPos){
+        Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
+        BiPredicate<Point, Point> withinReach = (p1, p2) -> p1.adjacent(p2);
+        List<Point> path =  strategy.computePath(this.getPosition(),
+                destPos, canPassThrough, withinReach,PathingStrategy.CARDINAL_NEIGHBORS);
+        if (path.size()==0) return getPosition();
+        return  path.get(0);
     }
 }

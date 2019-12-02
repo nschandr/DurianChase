@@ -18,7 +18,7 @@ current view (think virtual camera) into that world (WorldView)
       b. Bear changes in appearance by animating?
    2. World-changing event: new entity
       a. helper collector emerges from a pile of leaves
-   3. (EC) Implement new pathing algorithm. Perhaps for helper collector?
+   3. (EC) Implement new pathing algorithm for BEAR.
    4. Factory Design Pattern
    5. Scoreboard.
 
@@ -136,8 +136,8 @@ public final class VirtualWorld
       int currentTileX = tileX + view.getViewport().getCol();
       int currentTileY = tileY + view.getViewport().getRow();
       Point tile = new Point(currentTileX, currentTileY);
-      String leavesGround = "bubbles";
-      Obstacle.clicked("leaves", tile, imageStore.getImageList(leavesGround), world);
+      String leavesGround = "leaves";
+      Obstacle.clicked("leaves", tile, imageStore.getImageList(leavesGround), world, imageStore, scheduler);
 //      Background leaves = new Background(leavesGround, imageStore.getImageList(leavesGround));
 //      world.setBackground(tile, leaves);
 //      world.setBackground(new Point(tile.x + 1, tile.y), leaves);
