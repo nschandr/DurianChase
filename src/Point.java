@@ -115,7 +115,7 @@ final class Point
               actionPeriod);
    }
 
-   public Bear createCrab(String id, Point position,
+   public Bear createBear(String id, Point position,
                           int actionPeriod, int animationPeriod, List<PImage> images)
    {
       return new Bear(id, position, images, actionPeriod, animationPeriod);

@@ -5,18 +5,8 @@ atlantis images/basket.png
 atlantis images/basket.png
 atlantis images/basket.png
 atlantis images/basket.png
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
-crab images/bear.png 255 255 255 128
+water images/sea.bmp
+bear images/bear.png 255 255 255 128
 sea images/forest.bmp 255 255 255 0
 octo images/helper1.png 0 0 0 0
 octo images/helper1.png 0 0 0 0
@@ -32,7 +22,6 @@ quake images/quake4.bmp 255 255 255 0
 quake images/quake5.bmp 255 255 255 0
 quake images/quake6.bmp 255 255 255 0
 leaves images/leaf.png
-sea images/sea.bmp
 seaGrass images/tree.png 255 255 255 0
 background_default images/none.bmp
 collector images/collector.png

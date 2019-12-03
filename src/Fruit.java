@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 
 public class Fruit extends ActiveEntity{
-    public static final String CRAB_KEY = "crab";
+    public static final String CRAB_KEY = "bear";
     public static final String CRAB_ID_SUFFIX = " -- crab";
     public static final int CRAB_PERIOD_SCALE = 50;
     public static final int CRAB_ANIMATION_MIN = 50;
@@ -24,7 +24,7 @@ public class Fruit extends ActiveEntity{
         world.removeEntity(this);
         scheduler.unscheduleAllEvents(this);
 
-        Bear bear = pos.createCrab(getId() + CRAB_ID_SUFFIX,
+        Bear bear = pos.createBear(getId() + CRAB_ID_SUFFIX,
                 pos, getActionPeriod() / CRAB_PERIOD_SCALE,
                 CRAB_ANIMATION_MIN +
                         Functions.rand.nextInt(CRAB_ANIMATION_MAX - CRAB_ANIMATION_MIN),

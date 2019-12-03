@@ -16,11 +16,9 @@ current view (think virtual camera) into that world (WorldView)
    1. World-changing event: effect
       a. Bear changes in behaviour by moving twice as fast.
       b. Bear changes in appearance by animating?
-   2. World-changing event: new entity
-      a. helper collector emerges from a pile of leaves
-   3. (EC) Implement new pathing algorithm for BEAR.
-   4. Factory Design Pattern
-   5. Scoreboard.
+   2. (EC) Implement new pathing algorithm for BEAR.
+   3. Factory Design Pattern
+   4. Scoreboard.
 
  */
 
@@ -137,16 +135,21 @@ public final class VirtualWorld
       int currentTileY = tileY + view.getViewport().getRow();
       Point tile = new Point(currentTileX, currentTileY);
       String leavesGround = "leaves";
-      Obstacle.clicked("leaves", tile, imageStore.getImageList(leavesGround), world, imageStore, scheduler);
-//      Background leaves = new Background(leavesGround, imageStore.getImageList(leavesGround));
+      Background water = new Background("water", imageStore.getImageList("water"));
+      world.setBackground(tile, water);
+//       Background leaves = new Background(leavesGround, imageStore.getImageList("water"));
+//       world.setBackground(tile, leaves);
+
+//      Background leaves = new Background(leavesGround, imageStore.getImageList("sea"));
 //      world.setBackground(tile, leaves);
-//      world.setBackground(new Point(tile.x + 1, tile.y), leaves);
-//      world.setBackground(new Point(tile.x - 1, tile.y), leaves);
-//      world.setBackground(new Point(tile.x, tile.y + 1), leaves);
-//      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
-//      world.setBackground(new Point(tile.x, tile.y - 1), leaves);
-//      world.setBackground(new Point(tile.x + 1, tile.y - 1), leaves);
-//      world.setBackground(new Point(tile.x - 1, tile.y + 1), leaves);
+      world.setBackground(new Point(tile.x + 1, tile.y), water);
+      world.setBackground(new Point(tile.x - 1, tile.y), water);
+      world.setBackground(new Point(tile.x, tile.y + 1), water);
+      world.setBackground(new Point(tile.x, tile.y - 1), water);
+      world.setBackground(new Point(tile.x, tile.y - 1), water);
+      world.setBackground(new Point(tile.x + 1, tile.y - 1), water);
+      world.setBackground(new Point(tile.x - 1, tile.y + 1), water);
+      Obstacle.clicked("leaves", tile, imageStore.getImageList(leavesGround), world, imageStore, scheduler);
 //      world.removeEntityAt(tile);
    }
 
