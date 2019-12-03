@@ -459,8 +459,8 @@ final class WorldModel
 //               return parseOcto(properties, world, imageStore);
             case OBSTACLE_KEY:
                return parseObstacle(properties, world, imageStore);
-            case FISH_KEY:
-               return parseFish(properties, world, imageStore);
+//            case FISH_KEY:
+//               return parseFish(properties, world, imageStore);
             case ATLANTIS_KEY:
                return parseAtlantis(properties, world, imageStore);
             case SGRASS_KEY:
