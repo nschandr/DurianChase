@@ -137,4 +137,6 @@ final class Point
        return (x == p2.x && Math.abs(y - p2.y) == 1) ||
                (y == p2.y && Math.abs(x - p2.x) == 1);
    }
+
+
 }

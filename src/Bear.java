@@ -55,7 +55,6 @@ public class Bear extends Moves{
                 {
                     scheduler.unscheduleAllEvents(occupant.get());
                 }
-
                 world.moveEntity(this, nextPos);
             }
             return false;

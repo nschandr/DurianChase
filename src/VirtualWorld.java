@@ -19,7 +19,6 @@ current view (think virtual camera) into that world (WorldView)
    2. (EC) Implement new pathing algorithm for BEAR.
    3. Factory Design Pattern
    4. Scoreboard.
-
  */
 
 public final class VirtualWorld
