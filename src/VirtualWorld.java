@@ -141,6 +141,7 @@ public final class VirtualWorld
 
 //      Background leaves = new Background(leavesGround, imageStore.getImageList("sea"));
 //      world.setBackground(tile, leaves);
+      Obstacle.clicked("leaves", tile, imageStore.getImageList(leavesGround), world, imageStore, scheduler);
       world.setBackground(new Point(tile.x + 1, tile.y), water);
       world.setBackground(new Point(tile.x - 1, tile.y), water);
       world.setBackground(new Point(tile.x, tile.y + 1), water);
@@ -148,7 +149,7 @@ public final class VirtualWorld
       world.setBackground(new Point(tile.x, tile.y - 1), water);
       world.setBackground(new Point(tile.x + 1, tile.y - 1), water);
       world.setBackground(new Point(tile.x - 1, tile.y + 1), water);
-      Obstacle.clicked("leaves", tile, imageStore.getImageList(leavesGround), world, imageStore, scheduler);
+
 //      world.removeEntityAt(tile);
    }
 
