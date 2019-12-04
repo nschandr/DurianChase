@@ -33,7 +33,6 @@ public class Fruit extends ActiveEntity{
                     CRAB_ANIMATION_MIN +
                             Functions.rand.nextInt(CRAB_ANIMATION_MAX - CRAB_ANIMATION_MIN),
                     imageStore.getImageList(CRAB_KEY));
-            System.out.print("getid"+ getId());
 
             world.addEntity(bear);
             ((Bear)bear).scheduleActions(scheduler, world, imageStore);

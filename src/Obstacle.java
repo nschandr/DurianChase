@@ -13,6 +13,11 @@ public class Obstacle extends Entity {
         super(id, position, images);
     }
 
+//    @Override
+//    protected void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
+//
+//    }
+
     public static void clicked(String id, Point tile,List<PImage> images, WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         if (!world.isOccupied(tile) && numObstacles < maxObstacles) {
             createObstacles(id, tile, images, world);
@@ -46,5 +51,7 @@ public class Obstacle extends Entity {
         }
 
     }
+
+
 }
 
