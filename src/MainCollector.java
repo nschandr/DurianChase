@@ -6,6 +6,10 @@ import java.util.function.Predicate;
 public class MainCollector extends Entity{
     private int fruitCount = 0;
     private static MainCollector single_instance = null;
+    public static final String FISH_KEY = "fish";
+    public static final String FISH_ID_PREFIX = "fish -- ";
+    public static final int FISH_CORRUPT_MIN = 20000;
+    public static final int FISH_CORRUPT_MAX = 30000;
 
     private MainCollector(String id, Point position,List<PImage> images)
     {
@@ -23,7 +27,7 @@ public class MainCollector extends Entity{
         return single_instance;
     }
 
-    public void executeActivity(Point pos, WorldModel world, EventScheduler scheduler){
+    public void executeActivity(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler){
         Point nextPos = new Point(getPosition().x + pos.x, getPosition().y + pos.y);
         if (!this.getPosition().equals(nextPos))
         {
@@ -41,7 +45,16 @@ public class MainCollector extends Entity{
                     world.moveEntity(this, nextPos);
                 }
             }
-
         }
+//        int x = Functions.rand.nextInt(23);
+//        int y = Functions.rand.nextInt(14);
+//        Point point = new Point(x, y);
+//        Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
+//                point, FISH_CORRUPT_MIN +
+//                        Functions.rand.nextInt(FISH_CORRUPT_MAX - FISH_CORRUPT_MIN),
+//                imageStore.getImageList(FISH_KEY));
+//        world.addEntity(fruit);
+//        fruit.scheduleActions(scheduler, world, imageStore);
+
     }
 }

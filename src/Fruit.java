@@ -7,7 +7,7 @@ public class Fruit extends ActiveEntity{
     private static final int MAX_BEAR = 2;
     private static int bear_count = 0;
     public static final String BEAR_ID_SUFFIX = " -- bear";
-    public static final int CRAB_PERIOD_SCALE = 50;
+    public static final int CRAB_PERIOD_SCALE = 10;
     public static final int CRAB_ANIMATION_MIN = 50;
     public static final int CRAB_ANIMATION_MAX = 150;
 

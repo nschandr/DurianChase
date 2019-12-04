@@ -123,7 +123,7 @@ public final class VirtualWorld
          }
          Point pt = new Point (dx, dy);
          MainCollector collector = MainCollector.getInstance();
-         collector.executeActivity(pt, world, scheduler);
+         collector.executeActivity(pt, imageStore, world, scheduler);
       }
    }
 
