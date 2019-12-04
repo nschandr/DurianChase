@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Fruit extends AnimatedEntity{
     public static final String CRAB_KEY = "bear";
-    private static final int MAX_BEAR = 2;
+    private static final int MAX_BEAR = 1;
     private static int bear_count = 0;
     public static final String BEAR_ID_SUFFIX = " -- bear";
     public static final int CRAB_PERIOD_SCALE = 10;
