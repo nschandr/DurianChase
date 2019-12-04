@@ -27,11 +27,7 @@ public class HelperNotFull extends Helper {
                     this.createActivityAction(world, imageStore),
                     getActionPeriod());
         }
-        Optional<Entity> bearTarget = world.findNearest(getPosition(),
-                Bear.class);
-        if (bearTarget.isPresent()) {
-            ((Bear) bearTarget.get()).setActionPeriod(((Bear) bearTarget.get()).getActionPeriod() / 2);
-        }
+
     }
     protected boolean transform(WorldModel world,
                                     EventScheduler scheduler, ImageStore imageStore)
