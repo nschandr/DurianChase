@@ -36,9 +36,9 @@ public class MainCollector extends AnimatedEntity{
             if (collectorTarget.isPresent() && getPosition().adjacent(collectorTarget.get().getPosition()))
             {
                 if (collectorTarget.get().getClass() == Fruit.class){
+                    world.moveEntity(this, nextPos);
                     world.removeEntity(collectorTarget.get());
                     scheduler.unscheduleAllEvents(collectorTarget.get());
-                    world.moveEntity(this, nextPos);
                     super.fruitCount++;
                     System.out.println(super.fruitCount);
                 }
