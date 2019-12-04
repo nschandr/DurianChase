@@ -18,7 +18,10 @@ current view (think virtual camera) into that world (WorldView)
       b. Bear changes in appearance by animating?
    2. (EC) Implement new pathing algorithm for BEAR.
    3. Factory Design Pattern
-   4. Scoreboard.
+   4. Make everything stop after you die
+   5. Video
+   6. Text file
+   5. Scoreboard.
  */
 
 public final class VirtualWorld

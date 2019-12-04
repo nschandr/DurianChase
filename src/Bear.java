@@ -8,7 +8,6 @@ import java.util.function.Predicate;
 public class Bear extends Moves{
 
     public static final String QUAKE_KEY = "quake";
-//    public int bearScale = 100;
 
     public Bear(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod)
     {
@@ -66,7 +65,8 @@ public class Bear extends Moves{
                                  Point destPos){
         Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
         BiPredicate<Point, Point> withinReach = (p1, p2) -> p1.adjacent(p2);
-        List<Point> path =  strategy.computePath(this.getPosition(),
+        PathingStrategy newStrategy = new NewPathingStrategy();
+        List<Point> path =  newStrategy.computePath(this.getPosition(),
                 destPos, canPassThrough, withinReach,PathingStrategy.CARDINAL_NEIGHBORS);
         if (path.size()==0) return getPosition();
         return  path.get(0);

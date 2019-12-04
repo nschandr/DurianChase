@@ -30,7 +30,7 @@ public class HelperNotFull extends Helper {
         Optional<Entity> bearTarget = world.findNearest(getPosition(),
                 Bear.class);
         if (bearTarget.isPresent()) {
-            ((Bear) bearTarget.get()).setActionPeriod(((Bear) bearTarget.get()).getActionPeriod() / 10);
+            ((Bear) bearTarget.get()).setActionPeriod(((Bear) bearTarget.get()).getActionPeriod() / 2);
         }
     }
     protected boolean transform(WorldModel world,

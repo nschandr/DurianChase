@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public abstract class Helper extends Moves{
+    protected PathingStrategy strategy = new AStarPathingStrategy();
+
     private int resourceLimit;
     public Helper(String id, Point position, List<PImage> images, int resourceLimit, int actionPeriod, int animationPeriod){
         super(id, position, images, actionPeriod, animationPeriod);
@@ -27,8 +29,6 @@ public abstract class Helper extends Moves{
         return  path.get(0);
     }
 
-
-
     private static final Function<Point, Stream<Point>> DIAGONAL_CARDINAL_NEIGHBORS =
             point ->
                     Stream.<Point>builder()
@@ -41,5 +41,4 @@ public abstract class Helper extends Moves{
                             .add(new Point(point.x - 1, point.y))
                             .add(new Point(point.x + 1, point.y))
                             .build();
-
 }

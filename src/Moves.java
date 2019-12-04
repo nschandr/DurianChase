@@ -7,8 +7,6 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public abstract class Moves extends AnimatedEntity{
-//    protected PathingStrategy strategy = new SingleStepPathingStrategy();
-    protected PathingStrategy strategy = new AStarPathingStrategy();
     public Moves(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod){
         super(id, position, images, actionPeriod, animationPeriod);
     }
@@ -25,7 +23,5 @@ public abstract class Moves extends AnimatedEntity{
 //        if (path.size()==0) return getPosition();
 //        return  path.get(0);
 //    }
-
-
 
 }
