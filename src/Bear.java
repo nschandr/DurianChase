@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 public class Bear extends Moves{
 
     public static final String QUAKE_KEY = "quake";
+//    public int bearScale = 100;
 
     public Bear(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod)
     {
@@ -17,7 +18,7 @@ public class Bear extends Moves{
     protected void executeActivity(WorldModel world,
                                     ImageStore imageStore, EventScheduler scheduler) {
         Optional<Entity> bearTarget = world.findNearest(
-                getPosition(), Fruit.class);
+                getPosition(), MainCollector.class);
         long nextPeriod = getActionPeriod();
 
         if (bearTarget.isPresent()) {
@@ -35,6 +36,7 @@ public class Bear extends Moves{
         scheduler.scheduleEvent(this,
                 this.createActivityAction(world, imageStore),
                 nextPeriod);
+
     }
     protected boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler)
     {
@@ -68,5 +70,10 @@ public class Bear extends Moves{
                 destPos, canPassThrough, withinReach,PathingStrategy.CARDINAL_NEIGHBORS);
         if (path.size()==0) return getPosition();
         return  path.get(0);
+    }
+
+    @Override
+    protected int getActionPeriod() {
+        return super.getActionPeriod();
     }
 }

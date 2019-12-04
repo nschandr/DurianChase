@@ -26,6 +26,9 @@ public abstract class Helper extends Moves{
         if (path.size()==0) return getPosition();
         return  path.get(0);
     }
+
+
+
     private static final Function<Point, Stream<Point>> DIAGONAL_CARDINAL_NEIGHBORS =
             point ->
                     Stream.<Point>builder()

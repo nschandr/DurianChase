@@ -21,11 +21,12 @@ public class Fruit extends ActiveEntity{
     protected void executeActivity(WorldModel world,
                                     ImageStore imageStore, EventScheduler scheduler)
     {
-        Point pos = getPosition();  // store current position before removing
 
-        world.removeEntity(this);
-        scheduler.unscheduleAllEvents(this);
         if (bear_count<MAX_BEAR) {
+            Point pos = getPosition();  // store current position before removing
+
+            world.removeEntity(this);
+            scheduler.unscheduleAllEvents(this);
             EntityFactory entityFactory = new EntityFactory();
             Entity bear = entityFactory.createEntity("BEAR", getId() + BEAR_ID_SUFFIX,
                     pos, getActionPeriod() / CRAB_PERIOD_SCALE,

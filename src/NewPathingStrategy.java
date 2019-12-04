@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class DijkstrasPathingStrategy
+class NewPathingStrategy
         implements PathingStrategy
 {
     public List<Point> computePath(Point start, Point end,

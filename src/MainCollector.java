@@ -44,7 +44,4 @@ public class MainCollector extends Entity{
 
         }
     }
-
-
-
 }

@@ -9,7 +9,6 @@ public class Tree extends ActiveEntity{
     public static final int FISH_CORRUPT_MIN = 20000;
     public static final int FISH_CORRUPT_MAX = 30000;
 
-
     public Tree(String id, Point position,
                 List<PImage> images, int actionPeriod)
     {
@@ -23,17 +22,16 @@ public class Tree extends ActiveEntity{
 
         if (openPt.isPresent())
         {
-            Fruit fish = getPosition().createFish(FISH_ID_PREFIX + getId(),
+            Fruit fruit = getPosition().createFish(FISH_ID_PREFIX + getId(),
                     openPt.get(), FISH_CORRUPT_MIN +
                             Functions.rand.nextInt(FISH_CORRUPT_MAX - FISH_CORRUPT_MIN),
                     imageStore.getImageList(FISH_KEY));
-            world.addEntity(fish);
-            fish.scheduleActions(scheduler, world, imageStore);
+            world.addEntity(fruit);
+            fruit.scheduleActions(scheduler, world, imageStore);
         }
 
         scheduler.scheduleEvent(this,
                 this.createActivityAction(world, imageStore),
                 getActionPeriod());
     }
-
 }
