@@ -29,28 +29,25 @@ public class MainCollector extends AnimatedEntity{
 
     public void executeActivity(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler){
         Point nextPos = new Point(getPosition().x + pos.x, getPosition().y + pos.y);
-        if (!this.getPosition().equals(nextPos))
-        {
-            Optional<Entity> collectorTarget = world.findNearest(getPosition(),
-                    Fruit.class);
-            if (collectorTarget.isPresent() && getPosition().adjacent(collectorTarget.get().getPosition()))
-            {
-                if (collectorTarget.get().getClass() == Fruit.class){
-                    world.moveEntity(this, nextPos);
-                    world.removeEntity(collectorTarget.get());
-                    scheduler.unscheduleAllEvents(collectorTarget.get());
-                    super.fruitCount++;
-                    System.out.println(super.fruitCount);
-                }
-
-            }
-            else{
-                Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
-                if (canPassThrough.test(nextPos)){
-                    world.moveEntity(this, nextPos);
-                }
+//        if (!this.getPosition().equals(nextPos))
+//        {
+//            Optional<Entity> collectorTarget = world.findNearest(getPosition(),
+//                    Fruit.class);
+        Entity neighbour = world.getOccupancyCell(nextPos);
+        if (neighbour instanceof Fruit){
+            world.removeEntity(neighbour);
+            world.moveEntity(this, nextPos);
+            scheduler.unscheduleAllEvents(neighbour);
+            super.fruitCount++;
+            System.out.println(super.fruitCount);
+        } else {
+            Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
+            if (canPassThrough.test(nextPos)) {
+                world.moveEntity(this, nextPos);
             }
         }
+    }
+//        }
 //        int x = Functions.rand.nextInt(23);
 //        int y = Functions.rand.nextInt(14);
 //        Point point = new Point(x, y);
@@ -61,7 +58,6 @@ public class MainCollector extends AnimatedEntity{
 //        world.addEntity(fruit);
 //        fruit.scheduleActions(scheduler, world, imageStore);
 
-    }
 
     @Override
     protected void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
