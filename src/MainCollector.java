@@ -27,25 +27,32 @@ public class MainCollector extends AnimatedEntity{
         return single_instance;
     }
 
-    public void executeActivity(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler){
+    public void executeActivity(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler) {
         Point nextPos = new Point(getPosition().x + pos.x, getPosition().y + pos.y);
 //        if (!this.getPosition().equals(nextPos))
 //        {
 //            Optional<Entity> collectorTarget = world.findNearest(getPosition(),
 //                    Fruit.class);
-        Entity neighbour = world.getOccupancyCell(nextPos);
-        if (neighbour instanceof Fruit){
-            world.removeEntity(neighbour);
-            world.moveEntity(this, nextPos);
-            scheduler.unscheduleAllEvents(neighbour);
-            super.fruitCount++;
-            System.out.println(super.fruitCount);
-        } else {
-            Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
-            if (canPassThrough.test(nextPos)) {
+        if (world.withinBounds(nextPos)) {
+            Entity neighbour = world.getOccupancyCell(nextPos);
+            if (neighbour instanceof Fruit) {
+                world.removeEntity(neighbour);
                 world.moveEntity(this, nextPos);
+                scheduler.unscheduleAllEvents(neighbour);
+                super.fruitCount++;
+                System.out.println(super.fruitCount);
+            } else {
+                Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
+                if (canPassThrough.test(nextPos)) {
+                    world.moveEntity(this, nextPos);
+                }
             }
         }
+    }
+
+    @Override
+    protected void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
+
     }
 //        }
 //        int x = Functions.rand.nextInt(23);
@@ -58,9 +65,4 @@ public class MainCollector extends AnimatedEntity{
 //        world.addEntity(fruit);
 //        fruit.scheduleActions(scheduler, world, imageStore);
 
-
-    @Override
-    protected void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
-
-    }
 }
