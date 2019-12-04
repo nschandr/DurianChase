@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class Fruit extends ActiveEntity{
+public class Fruit extends AnimatedEntity{
     public static final String CRAB_KEY = "bear";
     private static final int MAX_BEAR = 2;
     private static int bear_count = 0;
@@ -13,9 +13,9 @@ public class Fruit extends ActiveEntity{
 
 
     public Fruit(String id, Point position,
-                 List<PImage> images, int actionPeriod)
+                 List<PImage> images, int actionPeriod, int animationPeriod)
     {
-        super(id, position, images, actionPeriod);
+        super(id, position, images, actionPeriod, animationPeriod);
     }
 
     protected void executeActivity(WorldModel world,

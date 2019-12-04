@@ -109,10 +109,10 @@ final class Point
    }
 
    public Fruit createFish(String id, Point position, int actionPeriod,
-                           List<PImage> images)
+                           List<PImage> images, int animationPeriod)
    {
       return new Fruit(id, position, images,
-              actionPeriod);
+              actionPeriod, animationPeriod);
    }
 
    public Bear createBear(String id, Point position,

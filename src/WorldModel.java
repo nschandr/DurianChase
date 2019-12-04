@@ -365,7 +365,7 @@ final class WorldModel
                  Integer.parseInt(properties[FISH_ROW]));
          Entity entity = pt.createFish(properties[FISH_ID],
                  pt, Integer.parseInt(properties[FISH_ACTION_PERIOD]),
-                 imageStore.getImageList(FISH_KEY));
+                 imageStore.getImageList(FISH_KEY), 1);
          world.tryAddEntity(entity);
       }
 

@@ -13,6 +13,7 @@ public class Tree extends ActiveEntity{
                 List<PImage> images, int actionPeriod)
     {
         super(id, position, images, actionPeriod);
+        super.setActionPeriod(10000);
     }
 
     protected void executeActivity(WorldModel world,
@@ -22,13 +23,13 @@ public class Tree extends ActiveEntity{
         int x = Functions.rand.nextInt(23);
         int y = Functions.rand.nextInt(14);
         Point point = new Point(x, y);
-        Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
-                point, FISH_CORRUPT_MIN +
-                        Functions.rand.nextInt(FISH_CORRUPT_MAX - FISH_CORRUPT_MIN),
-                imageStore.getImageList(FISH_KEY));
-        world.addEntity(fruit);
-        fruit.scheduleActions(scheduler, world, imageStore);
-
+        if(!world.isOccupied(point)) {
+            Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
+                    point, 5000,
+                    imageStore.getImageList(FISH_KEY), 1);
+            world.addEntity(fruit);
+            fruit.scheduleActions(scheduler, world, imageStore);
+        }
 //        Optional<Point> openPt = world.findOpenAround(getPosition());
 //        if (openPt.isPresent())
 //        {
