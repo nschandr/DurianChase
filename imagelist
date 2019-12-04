@@ -15,6 +15,9 @@ octo images/helper1.png 0 0 0 0
 octo images/helper1.png 0 0 0 0
 obstacle images/rock.bmp
 fish images/durian.png 255 255 255 0
+fish images/durian1.png 255 255 255 0
+fish images/durian2.png 255 255 255 0
+
 quake images/quake1.bmp 255 255 255 0
 quake images/quake2.bmp 255 255 255 0
 quake images/quake3.bmp 255 255 255 0
@@ -25,3 +28,4 @@ leaves images/leaf.png
 seaGrass images/tree.png 255 255 255 0
 background_default images/none.bmp
 collector images/collector.png
+collector images/collector1.png

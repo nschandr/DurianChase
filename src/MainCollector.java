@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class MainCollector extends Entity{
+public class MainCollector extends AnimatedEntity{
     private int fruitCount = 0;
     private static MainCollector single_instance = null;
     public static final String FISH_KEY = "fish";
@@ -11,14 +11,14 @@ public class MainCollector extends Entity{
     public static final int FISH_CORRUPT_MIN = 20000;
     public static final int FISH_CORRUPT_MAX = 30000;
 
-    private MainCollector(String id, Point position,List<PImage> images)
+    private MainCollector(String id, Point position,List<PImage> images, int actionPeriod, int animationPeriod)
     {
-        super(id, position, images);
+        super(id, position, images, actionPeriod, animationPeriod);
     }
 
     public static MainCollector createInstance(String id, Point position,List<PImage> images){
         if (single_instance==null) {
-            single_instance = new MainCollector(id, position, images);
+            single_instance = new MainCollector(id, position, images, 1, 1);
         }
         return single_instance;
     }
@@ -35,9 +35,14 @@ public class MainCollector extends Entity{
                     Fruit.class);
             if (collectorTarget.isPresent() && getPosition().adjacent(collectorTarget.get().getPosition()))
             {
-                world.removeEntity(collectorTarget.get());
-                scheduler.unscheduleAllEvents(collectorTarget.get());
-                world.moveEntity(this, nextPos);
+                if (collectorTarget.get().getClass() == Fruit.class){
+                    world.removeEntity(collectorTarget.get());
+                    scheduler.unscheduleAllEvents(collectorTarget.get());
+                    world.moveEntity(this, nextPos);
+                    super.fruitCount++;
+                    System.out.println(super.fruitCount);
+                }
+
             }
             else{
                 Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
@@ -55,6 +60,11 @@ public class MainCollector extends Entity{
 //                imageStore.getImageList(FISH_KEY));
 //        world.addEntity(fruit);
 //        fruit.scheduleActions(scheduler, world, imageStore);
+
+    }
+
+    @Override
+    protected void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
 
     }
 }
