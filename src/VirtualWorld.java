@@ -100,6 +100,17 @@ public final class VirtualWorld
       }
 
       view.drawViewport();
+
+
+      if (world.findNearest(new Point(0, 0), MainCollector.class).isPresent()){
+         textSize(20);
+         text("Fruits collected: " + world.getFruitsCollected(), 10, 735);
+      } else {
+         textSize(100);
+         text("GAME OVER!", 300, 380);
+         textSize(60);
+         text("Fruits collected: " + world.getFruitsCollected(), 340, 450);
+      }
    }
 
    public void keyPressed()

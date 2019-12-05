@@ -21,17 +21,19 @@ public class Tree extends ActiveEntity{
                                       ImageStore imageStore, EventScheduler scheduler)
     {
 
-        int x = Functions.rand.nextInt(23);
-        int y = Functions.rand.nextInt(14);
-        Point point = new Point(x, y);
-        if(!world.isOccupied(point) && world.getFruitsOnScreen() < 10) {
-            Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
-                    point, 5000,
-                    imageStore.getImageList(FISH_KEY), 1);
-            world.addEntity(fruit);
-            world.setFruitsOnScreen(world.getFruitsOnScreen()+1);
-            fruit.scheduleActions(scheduler, world, imageStore);
-        }
+        Optional<Entity> mainChar = world.findNearest(getPosition(), MainCollector.class);
+        if (mainChar.isPresent()) {
+            int x = Functions.rand.nextInt(23);
+            int y = Functions.rand.nextInt(14);
+            Point point = new Point(x, y);
+            if (!world.isOccupied(point) && world.getFruitsOnScreen() < 10) {
+                Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
+                        point, 5000,
+                        imageStore.getImageList(FISH_KEY), 1);
+                world.addEntity(fruit);
+                world.setFruitsOnScreen(world.getFruitsOnScreen() + 1);
+                fruit.scheduleActions(scheduler, world, imageStore);
+            }
 //        Optional<Point> openPt = world.findOpenAround(getPosition());
 //        if (openPt.isPresent())
 //        {
@@ -43,8 +45,9 @@ public class Tree extends ActiveEntity{
 //            fruit.scheduleActions(scheduler, world, imageStore);
 //        }
 
-        scheduler.scheduleEvent(this,
-                this.createActivityAction(world, imageStore),
-                getActionPeriod());
+            scheduler.scheduleEvent(this,
+                    this.createActivityAction(world, imageStore),
+                    getActionPeriod());
+        }
     }
 }
