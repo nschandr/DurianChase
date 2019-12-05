@@ -7,7 +7,6 @@ public class Fruit extends AnimatedEntity{
     private static final int MAX_BEAR = 1;
     private static int bear_count = 0;
     public static final String BEAR_ID_SUFFIX = " -- bear";
-    public static final int BEAR_PERIOD_SCALE = 10;
     public static final int BEAR_ANIMATION_MIN = 50;
     public static final int BEAR_ANIMATION_MAX = 150;
     
@@ -25,9 +24,7 @@ public class Fruit extends AnimatedEntity{
             int x = Functions.rand.nextInt(23);
             int y = Functions.rand.nextInt(14);
             Point pos = new Point(x, y);
-//            EntityFactory entityFactory = new EntityFactory();
             if(!world.isOccupied(pos)) {
-//                System.out.println("bear id " + getId());
                 Entity bear = entityFactory.createEntity("BEAR", getId() + BEAR_ID_SUFFIX,
                         pos, imageStore.getImageList(BEAR_KEY));
 

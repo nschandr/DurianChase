@@ -45,6 +45,7 @@ public class Tree extends ActiveEntity{
 //            world.addEntity(fruit);
 //            fruit.scheduleActions(scheduler, world, imageStore);
 //        }
+
             scheduler.scheduleEvent(this,
                     this.createActivityAction(world, imageStore),
                     getActionPeriod());

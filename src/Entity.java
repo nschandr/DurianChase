@@ -10,7 +10,7 @@ public abstract class Entity{
     private Point position;
     private List<PImage> images;
     private int imageIndex;
-    public int fruitCount;
+    protected int fruitCount;
     protected EntityFactory entityFactory = new EntityFactory();
 
     public Entity(String id, Point position, List<PImage> images){

@@ -10,14 +10,11 @@ in terms of entities and background elements
 final class WorldModel
 {
    private EntityFactory entityFactory = new EntityFactory();
-   public static final Random rand = new Random();
-
    public static final String MAIN_KEY = "collector";
    public static final int MAIN_NUM_PROPERTIES = 4;
    public static final int ID = 1;
    public static final int COL = 2;
    public static final int ROW = 3;
-   public static final int ACTION_PERIOD = 4;
 
    public static final String OBSTACLE_KEY = "obstacle";
    public static final int OBSTACLE_NUM_PROPERTIES = 4;
@@ -295,12 +292,8 @@ final class WorldModel
          {
             case BGND_KEY:
                return parseBackground(properties, world, imageStore);
-//            case OCTO_KEY:
-//               return parseOcto(properties, world, imageStore);
             case OBSTACLE_KEY:
                return parseObstacle(properties, world, imageStore);
-//            case FISH_KEY:
-//               return parseFish(properties, world, imageStore);
             case BASKET_KEY:
                return parseAtlantis(properties, world, imageStore);
             case TREE_KEY:
