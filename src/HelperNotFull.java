@@ -17,22 +17,21 @@ public class HelperNotFull extends Helper {
     protected void executeActivity(WorldModel world, ImageStore imageStore,
                                            EventScheduler scheduler)
     {
-        Optional<Entity> notFullTarget = world.findNearest(getPosition(),
-                Fruit.class);
-        if (!notFullTarget.isPresent() ||
-                !moveTo(world, notFullTarget.get(), scheduler) ||
-                !transform(world, scheduler, imageStore))
-        {
-            scheduler.scheduleEvent(this,
-                    this.createActivityAction(world, imageStore),
-                    getActionPeriod());
-        }
-        Optional<Entity> bearTarget = world.findNearest(getPosition(),
-                Bear.class);
-        if (bearTarget.isPresent()) {
-            ((Bear) bearTarget.get()).setActionPeriod(((Bear) bearTarget.get()).getActionPeriod() / 2);
+        Optional<Entity> mainChar = world.findNearest(getPosition(), MainCollector.class);
+        if (mainChar.isPresent()) {
+            Optional<Entity> notFullTarget = world.findNearest(getPosition(),
+                    Fruit.class);
+            if (!notFullTarget.isPresent() ||
+                    !moveTo(world, notFullTarget.get(), scheduler) ||
+                    !transform(world, scheduler, imageStore)) {
+                scheduler.scheduleEvent(this,
+                        this.createActivityAction(world, imageStore),
+                        getActionPeriod());
+            }
+
         }
     }
+
     protected boolean transform(WorldModel world,
                                     EventScheduler scheduler, ImageStore imageStore)
     {

@@ -37,8 +37,8 @@ public class Bear extends Moves{
         scheduler.scheduleEvent(this,
                 this.createActivityAction(world, imageStore),
                 nextPeriod);
-
     }
+
     protected boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler)
     {
         if (this.getPosition().adjacent(target.getPosition()))
