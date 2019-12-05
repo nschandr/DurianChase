@@ -38,15 +38,13 @@ public class HelperNotFull extends Helper {
     {
         if (this.resourceCount >= this.getResourceLimit())
         {
-            HelperFull octo = getPosition().createOctoFull(getId(), this.getResourceLimit(),
-                    getPosition(), getActionPeriod(), getAnimationPeriod(),
-                    getImages());
+            HelperFull helperFull = (HelperFull)entityFactory.createEntity("HelperFULL", getId(), getPosition(), getImages());
 
             world.removeEntity(this);
-            scheduler.unscheduleAllEvents(octo);
+            scheduler.unscheduleAllEvents(helperFull);
 
-            world.addEntity(octo);
-            octo.scheduleActions(scheduler, world, imageStore);
+            world.addEntity(helperFull);
+            helperFull.scheduleActions(scheduler, world, imageStore);
 
             return true;
         }

@@ -9,65 +9,25 @@ in terms of entities and background elements
 
 final class WorldModel
 {
+   private EntityFactory entityFactory = new EntityFactory();
    public static final Random rand = new Random();
 
    public static final String MAIN_KEY = "collector";
    public static final int MAIN_NUM_PROPERTIES = 4;
-   public static final int MAIN_ID = 1;
-   public static final int MAIN_COL = 2;
-   public static final int MAIN_ROW = 3;
-
-   public static final String OCTO_KEY = "octo";
-   public static final int OCTO_NUM_PROPERTIES = 7;
-   public static final int OCTO_ID = 1;
-   public static final int OCTO_COL = 2;
-   public static final int OCTO_ROW = 3;
-   public static final int OCTO_LIMIT = 4;
-   public static final int OCTO_ACTION_PERIOD = 5;
-   public static final int OCTO_ANIMATION_PERIOD = 6;
+   public static final int ID = 1;
+   public static final int COL = 2;
+   public static final int ROW = 3;
+   public static final int ACTION_PERIOD = 4;
 
    public static final String OBSTACLE_KEY = "obstacle";
    public static final int OBSTACLE_NUM_PROPERTIES = 4;
-   public static final int OBSTACLE_ID = 1;
-   public static final int OBSTACLE_COL = 2;
-   public static final int OBSTACLE_ROW = 3;
-
-   public static final String FISH_KEY = "fish";
-   public static final int FISH_NUM_PROPERTIES = 5;
-   public static final int FISH_ID = 1;
-   public static final int FISH_COL = 2;
-   public static final int FISH_ROW = 3;
-   public static final int FISH_ACTION_PERIOD = 4;
 
    public static final String ATLANTIS_KEY = "atlantis";
    public static final int ATLANTIS_NUM_PROPERTIES = 4;
-   public static final int ATLANTIS_ID = 1;
-   public static final int ATLANTIS_COL = 2;
-   public static final int ATLANTIS_ROW = 3;
 
-   public static final String SGRASS_KEY = "seaGrass";
-   public static final int SGRASS_NUM_PROPERTIES = 5;
-   public static final int SGRASS_ID = 1;
-   public static final int SGRASS_COL = 2;
-   public static final int SGRASS_ROW = 3;
-   public static final int SGRASS_ACTION_PERIOD = 4;
+   public static final String TREE_KEY = "seaGrass";
+   public static final int TREE_NUM_PROPERTIES = 5;
 
-   public static final String CRAB_KEY = "crab";
-   public static final String CRAB_ID_SUFFIX = " -- crab";
-   public static final int CRAB_PERIOD_SCALE = 4;
-   public static final int CRAB_ANIMATION_MIN = 50;
-   public static final int CRAB_ANIMATION_MAX = 150;
-
-   public static final String QUAKE_KEY = "quake";
-   public static final String QUAKE_ID = "quake";
-   public static final int QUAKE_ACTION_PERIOD = 1100;
-   public static final int QUAKE_ANIMATION_PERIOD = 100;
-   public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-
-
-   public static final String FISH_ID_PREFIX = "fish -- ";
-   public static final int FISH_CORRUPT_MIN = 20000;
-   public static final int FISH_CORRUPT_MAX = 30000;
    public static final int FISH_REACH = 1;
 
    public static final String BGND_KEY = "background";
@@ -305,7 +265,33 @@ final class WorldModel
       }
       return Optional.empty();
    }
+   public boolean processLine(String line, WorldModel world,
+                              ImageStore imageStore)
+   {
+      String[] properties = line.split("\\s");
+      if (properties.length > 0)
+      {
+         switch (properties[PROPERTY_KEY])
+         {
+            case BGND_KEY:
+               return parseBackground(properties, world, imageStore);
+//            case OCTO_KEY:
+//               return parseOcto(properties, world, imageStore);
+            case OBSTACLE_KEY:
+               return parseObstacle(properties, world, imageStore);
+//            case FISH_KEY:
+//               return parseFish(properties, world, imageStore);
+            case ATLANTIS_KEY:
+               return parseAtlantis(properties, world, imageStore);
+            case TREE_KEY:
+               return parseSgrass(properties, world, imageStore);
+            case MAIN_KEY:
+               return parseMainCollector(properties, world, imageStore);
+         }
+      }
 
+      return false;
+   }
    public boolean parseBackground(String [] properties,
                                          WorldModel world, ImageStore imageStore)
    {
@@ -346,9 +332,9 @@ final class WorldModel
       if (properties.length == OBSTACLE_NUM_PROPERTIES)
       {
          Point pt = new Point(
-                 Integer.parseInt(properties[OBSTACLE_COL]),
-                 Integer.parseInt(properties[OBSTACLE_ROW]));
-         Entity entity = pt.createObstacle(properties[OBSTACLE_ID],
+                 Integer.parseInt(properties[COL]),
+                 Integer.parseInt(properties[ROW]));
+         Obstacle entity = (Obstacle)entityFactory.createEntity("OBSTACLE", properties[ID],
                  pt, imageStore.getImageList(OBSTACLE_KEY));
          world.tryAddEntity(entity);
       }
@@ -356,30 +342,30 @@ final class WorldModel
       return properties.length == OBSTACLE_NUM_PROPERTIES;
    }
 
-   public boolean parseFish(String [] properties, WorldModel world,
-                                   ImageStore imageStore)
-   {
-      if (properties.length == FISH_NUM_PROPERTIES)
-      {
-         Point pt = new Point(Integer.parseInt(properties[FISH_COL]),
-                 Integer.parseInt(properties[FISH_ROW]));
-         Entity entity = pt.createFish(properties[FISH_ID],
-                 pt, Integer.parseInt(properties[FISH_ACTION_PERIOD]),
-                 imageStore.getImageList(FISH_KEY), 1);
-         world.tryAddEntity(entity);
-      }
-
-      return properties.length == FISH_NUM_PROPERTIES;
-   }
+//   public boolean parseFruit(String [] properties, WorldModel world,
+//                                   ImageStore imageStore)
+//   {
+//      if (properties.length == FISH_NUM_PROPERTIES)
+//      {
+//         Point pt = new Point(Integer.parseInt(properties[FISH_COL]),
+//                 Integer.parseInt(properties[FISH_ROW]));
+//         Entity entity = pt.createFish(properties[FISH_ID],
+//                 pt, Integer.parseInt(properties[FISH_ACTION_PERIOD]),
+//                 imageStore.getImageList(FISH_KEY), 1);
+//         world.tryAddEntity(entity);
+//      }
+//
+//      return properties.length == FISH_NUM_PROPERTIES;
+//   }
 
    public boolean parseAtlantis(String [] properties, WorldModel world,
                                        ImageStore imageStore)
    {
       if (properties.length == ATLANTIS_NUM_PROPERTIES)
       {
-         Point pt = new Point(Integer.parseInt(properties[ATLANTIS_COL]),
-                 Integer.parseInt(properties[ATLANTIS_ROW]));
-         Entity entity = pt.createAtlantis(properties[ATLANTIS_ID],
+         Point pt = new Point(Integer.parseInt(properties[COL]),
+                 Integer.parseInt(properties[ROW]));
+         Entity entity = pt.createAtlantis(properties[ID],
                  pt, imageStore.getImageList(ATLANTIS_KEY));
          world.tryAddEntity(entity);
       }
@@ -390,27 +376,27 @@ final class WorldModel
    public boolean parseSgrass(String [] properties, WorldModel world,
                                      ImageStore imageStore)
    {
-      if (properties.length == SGRASS_NUM_PROPERTIES)
+      if (properties.length == TREE_NUM_PROPERTIES)
       {
-         Point pt = new Point(Integer.parseInt(properties[SGRASS_COL]),
-                 Integer.parseInt(properties[SGRASS_ROW]));
-         Entity entity = pt.createSgrass(properties[SGRASS_ID],
+         Point pt = new Point(Integer.parseInt(properties[COL]),
+                 Integer.parseInt(properties[ROW]));
+         Entity entity = pt.createSgrass(properties[ID],
                  pt,
-                 Integer.parseInt(properties[SGRASS_ACTION_PERIOD]),
-                 imageStore.getImageList(SGRASS_KEY));
+                 Integer.parseInt(properties[ACTION_PERIOD]),
+                 imageStore.getImageList(TREE_KEY));
          world.tryAddEntity(entity);
       }
 
-      return properties.length == SGRASS_NUM_PROPERTIES;
+      return properties.length == TREE_NUM_PROPERTIES;
    }
    public boolean parseMainCollector(String [] properties, WorldModel world,
                                      ImageStore imageStore)
    {
       if (properties.length == MAIN_NUM_PROPERTIES)
       {
-         Point pt = new Point(Integer.parseInt(properties[MAIN_COL]),
-                 Integer.parseInt(properties[MAIN_ROW]));
-         Entity entity = MainCollector.createInstance(properties[MAIN_ID],
+         Point pt = new Point(Integer.parseInt(properties[COL]),
+                 Integer.parseInt(properties[ROW]));
+         Entity entity = MainCollector.createInstance(properties[ID],
                  pt, imageStore.getImageList(MAIN_KEY));
 
          world.tryAddEntity(entity);
@@ -445,33 +431,7 @@ final class WorldModel
       }
    }
 
-   public boolean processLine(String line, WorldModel world,
-                                     ImageStore imageStore)
-   {
-      String[] properties = line.split("\\s");
-      if (properties.length > 0)
-      {
-         switch (properties[PROPERTY_KEY])
-         {
-            case BGND_KEY:
-               return parseBackground(properties, world, imageStore);
-//            case OCTO_KEY:
-//               return parseOcto(properties, world, imageStore);
-            case OBSTACLE_KEY:
-               return parseObstacle(properties, world, imageStore);
-//            case FISH_KEY:
-//               return parseFish(properties, world, imageStore);
-            case ATLANTIS_KEY:
-               return parseAtlantis(properties, world, imageStore);
-            case SGRASS_KEY:
-               return parseSgrass(properties, world, imageStore);
-            case MAIN_KEY:
-               return parseMainCollector(properties, world, imageStore);
-         }
-      }
 
-      return false;
-   }
 
 }
 

@@ -1,7 +1,5 @@
 import processing.core.PImage;
-
 import java.util.List;
-import java.util.Optional;
 
 public class Tree extends ActiveEntity{
     public static final String FISH_KEY = "fish";
@@ -24,23 +22,13 @@ public class Tree extends ActiveEntity{
         int y = Functions.rand.nextInt(14);
         Point point = new Point(x, y);
         if(!world.isOccupied(point)) {
-            Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
-                    point, 5000,
-                    imageStore.getImageList(FISH_KEY), 1);
+            Entity fruit = entityFactory.createEntity("FRUIT", FISH_ID_PREFIX + getId(),
+                    point, imageStore.getImageList(FISH_KEY));
             world.addEntity(fruit);
-            fruit.scheduleActions(scheduler, world, imageStore);
+            if (fruit instanceof Fruit) {
+                ((Fruit)fruit).scheduleActions(scheduler, world, imageStore);
+            }
         }
-//        Optional<Point> openPt = world.findOpenAround(getPosition());
-//        if (openPt.isPresent())
-//        {
-//            Fruit fruit = getPosition().createFish(FISH_ID_PREFIX + getId(),
-//                    openPt.get(), FISH_CORRUPT_MIN +
-//                            Functions.rand.nextInt(FISH_CORRUPT_MAX - FISH_CORRUPT_MIN),
-//                    imageStore.getImageList(FISH_KEY));
-//            world.addEntity(fruit);
-//            fruit.scheduleActions(scheduler, world, imageStore);
-//        }
-
         scheduler.scheduleEvent(this,
                 this.createActivityAction(world, imageStore),
                 getActionPeriod());

@@ -13,10 +13,6 @@ components to make our world run (eventScheduler), the data in our world (WorldM
 current view (think virtual camera) into that world (WorldView)
  */
 /*TODO
-   1. World-changing event: effect
-      a. Bear changes in behaviour by moving twice as fast.
-      b. Bear changes in appearance by animating?
-   2. (EC) Implement new pathing algorithm for BEAR.
    3. Factory Design Pattern
    4. Make everything stop after you die
    5. Video
@@ -126,7 +122,7 @@ public final class VirtualWorld
          }
          Point pt = new Point (dx, dy);
          MainCollector collector = MainCollector.getInstance();
-         collector.executeActivity(pt, imageStore, world, scheduler);
+         collector.moveCollector(pt, imageStore, world, scheduler);
       }
    }
 

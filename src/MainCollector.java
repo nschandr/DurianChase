@@ -27,12 +27,8 @@ public class MainCollector extends AnimatedEntity{
         return single_instance;
     }
 
-    public void executeActivity(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler) {
+    public void moveCollector(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler) {
         Point nextPos = new Point(getPosition().x + pos.x, getPosition().y + pos.y);
-//        if (!this.getPosition().equals(nextPos))
-//        {
-//            Optional<Entity> collectorTarget = world.findNearest(getPosition(),
-//                    Fruit.class);
         if (world.withinBounds(nextPos)) {
             Entity neighbour = world.getOccupancyCell(nextPos);
             if (neighbour instanceof Fruit) {
@@ -41,7 +37,8 @@ public class MainCollector extends AnimatedEntity{
                 scheduler.unscheduleAllEvents(neighbour);
                 super.fruitCount++;
                 System.out.println(super.fruitCount);
-            } else {
+            }
+            else {
                 Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
                 if (canPassThrough.test(nextPos)) {
                     world.moveEntity(this, nextPos);

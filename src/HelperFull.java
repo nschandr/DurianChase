@@ -38,15 +38,13 @@ public class HelperFull extends Helper {
     protected boolean transform(WorldModel world,
                               EventScheduler scheduler, ImageStore imageStore)
     {
-        HelperNotFull octo = getPosition().createHelperNotFull(getId(), this.getResourceLimit(),
-                getPosition(), getActionPeriod(), getAnimationPeriod(),
-                getImages());
+        HelperNotFull helpernotfull = (HelperNotFull)entityFactory.createEntity("HelperNOTFULL", getId(), getPosition(), getImages());
 
         world.removeEntity(this);
         scheduler.unscheduleAllEvents(this);
+        world.addEntity(helpernotfull);
+        helpernotfull.scheduleActions(scheduler, world, imageStore);
 
-        world.addEntity(octo);
-        octo.scheduleActions(scheduler, world, imageStore);
         return true;
     }
 

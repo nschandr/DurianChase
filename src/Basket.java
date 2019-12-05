@@ -10,12 +10,6 @@ public class Basket extends Stationary{
     {
         super(id, position,images,actionPeriod,animationPeriod);
     }
-//    protected void executeActivity(WorldModel world,
-//                                        ImageStore imageStore, EventScheduler scheduler)
-//    {
-//        scheduler.unscheduleAllEvents(this);
-//        world.removeEntity(this);
-//    }
     protected void scheduleActions(EventScheduler scheduler,
                                 WorldModel world, ImageStore imageStore)
     {
