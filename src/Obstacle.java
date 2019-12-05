@@ -27,7 +27,7 @@ public class Obstacle extends Entity {
                         Bear.class);
                 if (bearTarget.isPresent() && (((Bear) bearTarget.get()).getActionPeriod() > 10)) {
                     ((Bear) bearTarget.get()).setActionPeriod(((Bear) bearTarget.get()).getActionPeriod() - 50);
-//                    System.out.println(((Bear) bearTarget.get()).getActionPeriod());
+                    System.out.println(((Bear) bearTarget.get()).getActionPeriod());
                 }
             }
         }
