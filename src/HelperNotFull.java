@@ -41,11 +41,11 @@ public class HelperNotFull extends Helper {
             HelperFull helperFull = (HelperFull)entityFactory.createEntity("HelperFULL", getId(), getPosition(), getImages());
 
             world.removeEntity(this);
-            scheduler.unscheduleAllEvents(helperFull);
-
-            world.addEntity(helperFull);
-            helperFull.scheduleActions(scheduler, world, imageStore);
-
+            scheduler.unscheduleAllEvents(helper);
+            world.setFruitsOnScreen(world.getFruitsOnScreen()-1);
+            world.setFruitsCollected(world.getFruitsCollected()+1);
+            world.addEntity(helper);
+            helper.scheduleActions(scheduler, world, imageStore);
             return true;
         }
 

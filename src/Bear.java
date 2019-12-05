@@ -30,6 +30,7 @@ public class Bear extends Moves{
                 world.addEntity(quake);
                 nextPeriod += getActionPeriod();
                 quake.scheduleActions(scheduler, world, imageStore);
+                world.removeEntity(bearTarget.get());
             }
         }
         scheduler.scheduleEvent(this,

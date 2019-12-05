@@ -38,6 +38,9 @@ final class WorldModel
 
    public static final int PROPERTY_KEY = 0;
 
+   private int fruitsCollected = 0;
+   private int fruitsOnScreen = 0;
+
 
    private int numRows;
    private int numCols;
@@ -58,6 +61,23 @@ final class WorldModel
          Arrays.fill(this.background[row], defaultBackground);
       }
    }
+
+   public int getFruitsCollected() {
+      return fruitsCollected;
+   }
+
+   public int getFruitsOnScreen() {
+      return fruitsOnScreen;
+   }
+
+   public void setFruitsCollected(int fruitsCollected) {
+      this.fruitsCollected = fruitsCollected;
+   }
+
+   public void setFruitsOnScreen(int fruitsOnScreen) {
+      this.fruitsOnScreen = fruitsOnScreen;
+   }
+
    public int getNumRows(){
       return this.numRows;
    }

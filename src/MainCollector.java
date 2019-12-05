@@ -3,22 +3,22 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class MainCollector extends AnimatedEntity{
-    private int fruitCount = 0;
+public class MainCollector extends Entity{
+//    private int fruitCount = 0;
     private static MainCollector single_instance = null;
     public static final String FISH_KEY = "fish";
     public static final String FISH_ID_PREFIX = "fish -- ";
     public static final int FISH_CORRUPT_MIN = 20000;
     public static final int FISH_CORRUPT_MAX = 30000;
 
-    private MainCollector(String id, Point position,List<PImage> images, int actionPeriod, int animationPeriod)
+    private MainCollector(String id, Point position,List<PImage> images)
     {
-        super(id, position, images, actionPeriod, animationPeriod);
+        super(id, position, images);
     }
 
     public static MainCollector createInstance(String id, Point position,List<PImage> images){
         if (single_instance==null) {
-            single_instance = new MainCollector(id, position, images, 1, 1);
+            single_instance = new MainCollector(id, position, images);
         }
         return single_instance;
     }
@@ -27,18 +27,22 @@ public class MainCollector extends AnimatedEntity{
         return single_instance;
     }
 
-    public void moveCollector(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler) {
+    public void executeActivity(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler) {
         Point nextPos = new Point(getPosition().x + pos.x, getPosition().y + pos.y);
+//        if (!this.getPosition().equals(nextPos))
+//        {
+//            Optional<Entity> collectorTarget = world.findNearest(getPosition(),
+//                    Fruit.class);
         if (world.withinBounds(nextPos)) {
             Entity neighbour = world.getOccupancyCell(nextPos);
             if (neighbour instanceof Fruit) {
                 world.removeEntity(neighbour);
                 world.moveEntity(this, nextPos);
                 scheduler.unscheduleAllEvents(neighbour);
-                super.fruitCount++;
-                System.out.println(super.fruitCount);
-            }
-            else {
+                world.setFruitsCollected(world.getFruitsCollected()+1);
+                System.out.println(world.getFruitsCollected());
+                world.setFruitsOnScreen(world.getFruitsOnScreen()-1);
+            } else {
                 Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
                 if (canPassThrough.test(nextPos)) {
                     world.moveEntity(this, nextPos);
@@ -46,20 +50,4 @@ public class MainCollector extends AnimatedEntity{
             }
         }
     }
-
-    @Override
-    protected void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
-
-    }
-//        }
-//        int x = Functions.rand.nextInt(23);
-//        int y = Functions.rand.nextInt(14);
-//        Point point = new Point(x, y);
-//        Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
-//                point, FISH_CORRUPT_MIN +
-//                        Functions.rand.nextInt(FISH_CORRUPT_MAX - FISH_CORRUPT_MIN),
-//                imageStore.getImageList(FISH_KEY));
-//        world.addEntity(fruit);
-//        fruit.scheduleActions(scheduler, world, imageStore);
-
 }
