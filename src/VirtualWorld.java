@@ -12,14 +12,8 @@ It keeps track of data necessary to use Processing for drawing but also keeps tr
 components to make our world run (eventScheduler), the data in our world (WorldModel) and our
 current view (think virtual camera) into that world (WorldView)
  */
-/*TODO
-   3. Factory Design Pattern
-   4. Make everything stop after you die
-   5. Video
-   6. Text file
-   5. Scoreboard.
- */
 
+//DurianChase by Elaine Pranadjaya & Nithya Chandran
 public final class VirtualWorld
    extends PApplet
 {

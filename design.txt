@@ -1,4 +1,4 @@
-DURIANCHASE
+DURIANCHASE, game by Elaine Pranadjaya & Nithya Chandran.
 HOW IT WORKS
 Our game, DurianChase, has a main character that is movable with courser keys.
 The moving entities in the game are the main character, the helpers, and the bear.
