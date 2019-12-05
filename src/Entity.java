@@ -10,14 +10,14 @@ public abstract class Entity{
     private Point position;
     private List<PImage> images;
     private int imageIndex;
-    public int fruitCount;
+//    public int fruitCount;
 
     public Entity(String id, Point position, List<PImage> images){
         this.id = id;
         this.position = position;
         this.images = images;
         this.imageIndex = 0;
-        this.fruitCount = 0;
+//        this.fruitCount = 0;
     }
 
     protected String getId(){
@@ -43,8 +43,8 @@ public abstract class Entity{
         this.imageIndex = index;
     }
 
-    protected int getFruitCount() {
-        return fruitCount;
-    }
+//    protected int getFruitCount() {
+//        return fruitCount;
+//    }
 }
 

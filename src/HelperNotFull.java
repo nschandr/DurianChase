@@ -34,15 +34,16 @@ public class HelperNotFull extends Helper {
     {
         if (this.resourceCount >= this.getResourceLimit())
         {
-            HelperFull octo = getPosition().createOctoFull(getId(), this.getResourceLimit(),
-                    getPosition(), getActionPeriod(), getAnimationPeriod(),
+            HelperFull helper = getPosition().createOctoFull(getId(), this.getResourceLimit(),
+                    getPosition(), 500, getAnimationPeriod(),
                     getImages());
 
             world.removeEntity(this);
-            scheduler.unscheduleAllEvents(octo);
-
-            world.addEntity(octo);
-            octo.scheduleActions(scheduler, world, imageStore);
+            scheduler.unscheduleAllEvents(helper);
+            world.setFruitsOnScreen(world.getFruitsOnScreen()-1);
+            world.setFruitsCollected(world.getFruitsCollected()+1);
+            world.addEntity(helper);
+            helper.scheduleActions(scheduler, world, imageStore);
 
             return true;
         }

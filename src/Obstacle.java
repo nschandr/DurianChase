@@ -19,7 +19,7 @@ public class Obstacle extends Entity {
         if (!world.isOccupied(tile) && numObstacles < maxObstacles) {
             createObstacles(id, tile, images, world);
             if (helper_count < HELPER_LIMIT){
-                HelperNotFull helper = tile.createHelperNotFull("helper", 1, tile, 5, 6, imageStore.getImageList("octo"));
+                HelperNotFull helper = tile.createHelperNotFull("helper", 1, tile, 500, 6, imageStore.getImageList("octo"));
                 world.addEntity(helper);
                 helper_count++;
                 helper.scheduleActions(scheduler, world, imageStore);
@@ -27,7 +27,7 @@ public class Obstacle extends Entity {
                         Bear.class);
                 if (bearTarget.isPresent() && (((Bear) bearTarget.get()).getActionPeriod() > 10)) {
                     ((Bear) bearTarget.get()).setActionPeriod(((Bear) bearTarget.get()).getActionPeriod() - 50);
-                    System.out.println(((Bear) bearTarget.get()).getActionPeriod());
+//                    System.out.println(((Bear) bearTarget.get()).getActionPeriod());
                 }
             }
         }
