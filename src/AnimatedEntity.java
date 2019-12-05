@@ -39,7 +39,4 @@ public abstract class AnimatedEntity extends ActiveEntity{
                     this.getAnimationPeriod());
         }
     }
-
-
-
 }
