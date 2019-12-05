@@ -48,12 +48,8 @@ public class Obstacle extends Entity {
             if (!world.isOccupied(leaf.getPosition())) {
                 world.tryAddEntity(leaf);
                 numObstacles++;
-
             }
         }
-
     }
-
-
 }
 

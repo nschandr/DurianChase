@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Fruit extends AnimatedEntity{
     public static final String BEAR_KEY = "bear";
-    private static final int MAX_BEAR = 1;
+    private static final int MAX_BEAR = 2;
     private static int bear_count = 0;
     public static final String BEAR_ID_SUFFIX = " -- bear";
     public static final int BEAR_PERIOD_SCALE = 10;
@@ -27,7 +27,7 @@ public class Fruit extends AnimatedEntity{
             Point pos = new Point(x, y);
 //            EntityFactory entityFactory = new EntityFactory();
             if(!world.isOccupied(pos)) {
-                System.out.println("bear id " + getId());
+//                System.out.println("bear id " + getId());
                 Entity bear = entityFactory.createEntity("BEAR", getId() + BEAR_ID_SUFFIX,
                         pos, imageStore.getImageList(BEAR_KEY));
 

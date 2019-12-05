@@ -40,7 +40,7 @@ public class MainCollector extends Entity{
                 world.moveEntity(this, nextPos);
                 scheduler.unscheduleAllEvents(neighbour);
                 world.setFruitsCollected(world.getFruitsCollected()+1);
-                System.out.println(world.getFruitsCollected());
+//                System.out.println(world.getFruitsCollected());
                 world.setFruitsOnScreen(world.getFruitsOnScreen()-1);
             } else {
                 Predicate<Point> canPassThrough = (point) -> world.withinBounds(point) && !world.isOccupied(point);
