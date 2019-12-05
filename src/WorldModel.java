@@ -320,25 +320,6 @@ final class WorldModel
       return properties.length == BGND_NUM_PROPERTIES;
    }
 
-//   public boolean parseOcto(String [] properties, WorldModel world,
-//                                   ImageStore imageStore)
-//   {
-//      if (properties.length == OCTO_NUM_PROPERTIES)
-//      {
-//         Point pt = new Point(Integer.parseInt(properties[OCTO_COL]),
-//                 Integer.parseInt(properties[OCTO_ROW]));
-//         Entity entity = pt.createHelperNotFull(properties[OCTO_ID],
-//                 Integer.parseInt(properties[OCTO_LIMIT]),
-//                 pt,
-//                 Integer.parseInt(properties[OCTO_ACTION_PERIOD]),
-//                 Integer.parseInt(properties[OCTO_ANIMATION_PERIOD]),
-//                 imageStore.getImageList(OCTO_KEY));
-//         world.tryAddEntity(entity);
-//      }
-//
-//      return properties.length == OCTO_NUM_PROPERTIES;
-//   }
-
    public boolean parseObstacle(String [] properties, WorldModel world,
                                        ImageStore imageStore)
    {
@@ -355,21 +336,6 @@ final class WorldModel
       return properties.length == OBSTACLE_NUM_PROPERTIES;
    }
 
-//   public boolean parseFruit(String [] properties, WorldModel world,
-//                                   ImageStore imageStore)
-//   {
-//      if (properties.length == FISH_NUM_PROPERTIES)
-//      {
-//         Point pt = new Point(Integer.parseInt(properties[FISH_COL]),
-//                 Integer.parseInt(properties[FISH_ROW]));
-//         Entity entity = pt.createFish(properties[FISH_ID],
-//                 pt, Integer.parseInt(properties[FISH_ACTION_PERIOD]),
-//                 imageStore.getImageList(FISH_KEY), 1);
-//         world.tryAddEntity(entity);
-//      }
-//
-//      return properties.length == FISH_NUM_PROPERTIES;
-//   }
 
    public boolean parseAtlantis(String [] properties, WorldModel world,
                                        ImageStore imageStore)
@@ -392,10 +358,6 @@ final class WorldModel
          Point pt = new Point(Integer.parseInt(properties[COL]),
                  Integer.parseInt(properties[ROW]));
          Tree entity = (Tree)entityFactory.createEntity("TREE", properties[ID], pt, imageStore.getImageList(TREE_KEY));
-//         Entity entity = pt.createSgrass(properties[ID],
-//                 pt,
-//                 Integer.parseInt(properties[ACTION_PERIOD]),
-//                 imageStore.getImageList(TREE_KEY));
          world.tryAddEntity(entity);
       }
 
@@ -410,9 +372,6 @@ final class WorldModel
                  Integer.parseInt(properties[ROW]));
          MainCollector entity = (MainCollector)entityFactory.createEntity("MAINCOLLECTOR", properties[ID],
                  pt, imageStore.getImageList(MAIN_KEY));
-//         Entity entity = MainCollector.createInstance(properties[ID],
-//                 pt, imageStore.getImageList(MAIN_KEY));
-
          world.tryAddEntity(entity);
       }
 
