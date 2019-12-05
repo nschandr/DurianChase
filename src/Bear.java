@@ -24,8 +24,9 @@ public class Bear extends Moves{
             Point tgtPos = bearTarget.get().getPosition();
 
             if (moveTo(world, bearTarget.get(), scheduler)) {
-                Quake quake = tgtPos.createQuake(tgtPos,
-                        imageStore.getImageList(QUAKE_KEY));
+                Quake quake = (Quake)entityFactory.createEntity("QUAKE", "quake", tgtPos, imageStore.getImageList(QUAKE_KEY));
+//                Quake quake = tgtPos.createQuake(tgtPos,
+//                        imageStore.getImageList(QUAKE_KEY));
 
                 world.addEntity(quake);
                 nextPeriod += getActionPeriod();

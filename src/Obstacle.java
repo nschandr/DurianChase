@@ -19,10 +19,12 @@ public class Obstacle extends Entity {
         if (!world.isOccupied(tile) && numObstacles < maxObstacles) {
             createObstacles(id, tile, images, world);
             if (helper_count < HELPER_LIMIT){
-                HelperNotFull helper = tile.createHelperNotFull("helper", 1, tile, 500, 6, imageStore.getImageList("octo"));
-                world.addEntity(helper);
+                EntityFactory entityFactory = new EntityFactory();
+                HelperNotFull notFull = (HelperNotFull)entityFactory.createEntity("HelperNOTFULL", "helper", tile, imageStore.getImageList("octo"));
+//                HelperNotFull helper = tile.createHelperNotFull("helper", 1, tile, 500, 6, imageStore.getImageList("octo"));
+                world.addEntity(notFull);
                 helper_count++;
-                helper.scheduleActions(scheduler, world, imageStore);
+                notFull.scheduleActions(scheduler, world, imageStore);
                 Optional<Entity> bearTarget = world.findNearest(new Point(0, 0),
                         Bear.class);
                 if (bearTarget.isPresent() && (((Bear) bearTarget.get()).getActionPeriod() > 10)) {

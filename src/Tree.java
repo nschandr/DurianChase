@@ -27,9 +27,10 @@ public class Tree extends ActiveEntity{
             int y = Functions.rand.nextInt(14);
             Point point = new Point(x, y);
             if (!world.isOccupied(point) && world.getFruitsOnScreen() < 10) {
-                Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
-                        point, 5000,
-                        imageStore.getImageList(FISH_KEY), 1);
+                Fruit fruit = (Fruit)entityFactory.createEntity("FRUIT", FISH_ID_PREFIX + getId(), point, imageStore.getImageList(FISH_KEY));
+//                Fruit fruit = point.createFish(FISH_ID_PREFIX + getId(),
+//                        point, 5000,
+//                        imageStore.getImageList(FISH_KEY), 1);
                 world.addEntity(fruit);
                 world.setFruitsOnScreen(world.getFruitsOnScreen() + 1);
                 fruit.scheduleActions(scheduler, world, imageStore);
