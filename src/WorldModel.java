@@ -22,8 +22,8 @@ final class WorldModel
    public static final String OBSTACLE_KEY = "obstacle";
    public static final int OBSTACLE_NUM_PROPERTIES = 4;
 
-   public static final String ATLANTIS_KEY = "atlantis";
-   public static final int ATLANTIS_NUM_PROPERTIES = 4;
+   public static final String BASKET_KEY = "atlantis";
+   public static final int BASKET_NUM_PROPERTIES = 4;
 
    public static final String TREE_KEY = "seaGrass";
    public static final int TREE_NUM_PROPERTIES = 5;
@@ -301,7 +301,7 @@ final class WorldModel
                return parseObstacle(properties, world, imageStore);
 //            case FISH_KEY:
 //               return parseFish(properties, world, imageStore);
-            case ATLANTIS_KEY:
+            case BASKET_KEY:
                return parseAtlantis(properties, world, imageStore);
             case TREE_KEY:
                return parseSgrass(properties, world, imageStore);
@@ -381,16 +381,14 @@ final class WorldModel
    public boolean parseAtlantis(String [] properties, WorldModel world,
                                        ImageStore imageStore)
    {
-      if (properties.length == ATLANTIS_NUM_PROPERTIES)
+      if (properties.length == BASKET_NUM_PROPERTIES)
       {
          Point pt = new Point(Integer.parseInt(properties[COL]),
                  Integer.parseInt(properties[ROW]));
-         Entity entity = pt.createAtlantis(properties[ID],
-                 pt, imageStore.getImageList(ATLANTIS_KEY));
-         world.tryAddEntity(entity);
+         Basket basket = (Basket)entityFactory.createEntity("BASKET", properties[ID], pt, imageStore.getImageList(BASKET_KEY));
+         world.tryAddEntity(basket);
       }
-
-      return properties.length == ATLANTIS_NUM_PROPERTIES;
+      return properties.length == BASKET_NUM_PROPERTIES;
    }
 
    public boolean parseSgrass(String [] properties, WorldModel world,
@@ -400,10 +398,11 @@ final class WorldModel
       {
          Point pt = new Point(Integer.parseInt(properties[COL]),
                  Integer.parseInt(properties[ROW]));
-         Entity entity = pt.createSgrass(properties[ID],
-                 pt,
-                 Integer.parseInt(properties[ACTION_PERIOD]),
-                 imageStore.getImageList(TREE_KEY));
+         Tree entity = (Tree)entityFactory.createEntity("TREE", properties[ID], pt, imageStore.getImageList(TREE_KEY));
+//         Entity entity = pt.createSgrass(properties[ID],
+//                 pt,
+//                 Integer.parseInt(properties[ACTION_PERIOD]),
+//                 imageStore.getImageList(TREE_KEY));
          world.tryAddEntity(entity);
       }
 
@@ -416,8 +415,10 @@ final class WorldModel
       {
          Point pt = new Point(Integer.parseInt(properties[COL]),
                  Integer.parseInt(properties[ROW]));
-         Entity entity = MainCollector.createInstance(properties[ID],
+         MainCollector entity = (MainCollector)entityFactory.createEntity("MAINCOLLECTOR", properties[ID],
                  pt, imageStore.getImageList(MAIN_KEY));
+//         Entity entity = MainCollector.createInstance(properties[ID],
+//                 pt, imageStore.getImageList(MAIN_KEY));
 
          world.tryAddEntity(entity);
       }

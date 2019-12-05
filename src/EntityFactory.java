@@ -3,6 +3,8 @@ import processing.core.PImage;
 import java.util.List;
 
 public class EntityFactory {
+    public static final int QUAKE_ACTION_PERIOD = 1100;
+    public static final int QUAKE_ANIMATION_PERIOD = 100;
     public Entity createEntity(String entityType, String id, Point position, List<PImage> images){
 
         if(entityType == null){
@@ -23,6 +25,19 @@ public class EntityFactory {
         }
         else if(entityType.equalsIgnoreCase("OBSTACLE")){
             return new Obstacle(id, position, images);
+        }
+        else if(entityType.equalsIgnoreCase("BASKET")){
+            return new Basket(id, position, images, 8000, 10);
+        }
+        else if(entityType.equalsIgnoreCase("TREE")){
+            return new Tree(id, position, images, 1000+ Functions.rand.nextInt(2000));
+        }
+        else if(entityType.equalsIgnoreCase("MAINCOLLECTOR")) {
+            return MainCollector.createInstance(id,
+                    position, images);
+        }
+        else if(entityType.equalsIgnoreCase("QUAKE")){
+            return new Quake(id, position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
         }
 
 //        if(entityType.equalsIgnoreCase("ATLANTIS")){

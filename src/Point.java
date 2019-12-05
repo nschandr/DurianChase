@@ -7,8 +7,7 @@ import java.util.List;
 final class Point
 {
    public static final String QUAKE_ID = "quake";
-   public static final int QUAKE_ACTION_PERIOD = 1100;
-   public static final int QUAKE_ANIMATION_PERIOD = 100;
+
    public final int x;
    public final int y;
    private int g;  //dist from start node;
@@ -80,56 +79,56 @@ final class Point
       return result;
    }
 
-   public Basket createAtlantis(String id, Point position,
-                                List<PImage> images)
-   {
-      return new Basket(id, position, images, 0, 0);
-   }
-
-   public HelperFull createOctoFull(String id, int resourceLimit,
-                                    Point position, int actionPeriod, int animationPeriod,
-                                    List<PImage> images)
-   {
-      return new HelperFull(id, position, images,
-              resourceLimit, actionPeriod, animationPeriod);
-   }
-
-   public HelperNotFull createHelperNotFull(String id, int resourceLimit,
-                                            Point position, int actionPeriod, int animationPeriod,
-                                            List<PImage> images)
-   {
-      return new HelperNotFull(id, position, images,
-              resourceLimit, 0, actionPeriod, animationPeriod);
-   }
-
-   public Obstacle createObstacle(String id, Point position,
-                                       List<PImage> images)
-   {
-      return new Obstacle(id, position, images);
-   }
-
-   public Fruit createFish(String id, Point position, int actionPeriod,
-                           List<PImage> images, int animationPeriod)
-   {
-      return new Fruit(id, position, images,
-              actionPeriod, animationPeriod);
-   }
-
-   public Bear createBear(String id, Point position,
-                          int actionPeriod, int animationPeriod, List<PImage> images)
-   {
-      return new Bear(id, position, images, actionPeriod, animationPeriod);
-   }
-
-   public Quake createQuake(Point position, List<PImage> images)
-   {
-      return new Quake(QUAKE_ID, position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
-   }
-   public Tree createSgrass(String id, Point position, int actionPeriod,
-                            List<PImage> images)
-   {
-      return new Tree(id, position, images, actionPeriod);
-   }
+//   public Basket createAtlantis(String id, Point position,
+//                                List<PImage> images)
+//   {
+//      return new Basket(id, position, images, 0, 0);
+//   }
+//
+//   public HelperFull createOctoFull(String id, int resourceLimit,
+//                                    Point position, int actionPeriod, int animationPeriod,
+//                                    List<PImage> images)
+//   {
+//      return new HelperFull(id, position, images,
+//              resourceLimit, actionPeriod, animationPeriod);
+//   }
+//
+//   public HelperNotFull createHelperNotFull(String id, int resourceLimit,
+//                                            Point position, int actionPeriod, int animationPeriod,
+//                                            List<PImage> images)
+//   {
+//      return new HelperNotFull(id, position, images,
+//              resourceLimit, 0, actionPeriod, animationPeriod);
+//   }
+//
+//   public Obstacle createObstacle(String id, Point position,
+//                                       List<PImage> images)
+//   {
+//      return new Obstacle(id, position, images);
+//   }
+//
+//   public Fruit createFish(String id, Point position, int actionPeriod,
+//                           List<PImage> images, int animationPeriod)
+//   {
+//      return new Fruit(id, position, images,
+//              actionPeriod, animationPeriod);
+//   }
+//
+//   public Bear createBear(String id, Point position,
+//                          int actionPeriod, int animationPeriod, List<PImage> images)
+//   {
+//      return new Bear(id, position, images, actionPeriod, animationPeriod);
+//   }
+//
+//   public Quake createQuake(Point position, List<PImage> images)
+//   {
+//      return new Quake(QUAKE_ID, position, images, QUAKE_ACTION_PERIOD, QUAKE_ANIMATION_PERIOD);
+//   }
+//   public Tree createSgrass(String id, Point position, int actionPeriod,
+//                            List<PImage> images)
+//   {
+//      return new Tree(id, position, images, actionPeriod);
+//   }
 
 
    public boolean adjacent(Point p2)
