@@ -27,7 +27,7 @@ public class MainCollector extends Entity{
         return single_instance;
     }
 
-    public void executeActivity(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler) {
+    public void moveCollector(Point pos, ImageStore imageStore, WorldModel world, EventScheduler scheduler) {
         Point nextPos = new Point(getPosition().x + pos.x, getPosition().y + pos.y);
 //        if (!this.getPosition().equals(nextPos))
 //        {

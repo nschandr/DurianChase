@@ -16,10 +16,10 @@ public class EntityFactory {
             return new Fruit(id, position, images, 5000, 1);
         }
         else if(entityType.equalsIgnoreCase("HelperNOTFULL")){
-            return new HelperNotFull(id, position, images, 1, 0, 5, 6);
+            return new HelperNotFull(id, position, images, 1, 0, 500, 6);
         }
         else if(entityType.equalsIgnoreCase("HelperFULL")){
-            return new HelperFull(id, position, images, 1,  5, 6);
+            return new HelperFull(id, position, images, 1,  500, 6);
         }
         else if(entityType.equalsIgnoreCase("OBSTACLE")){
             return new Obstacle(id, position, images);
