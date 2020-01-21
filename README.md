@@ -1,8 +1,9 @@
 DURIANCHASE, game by Elaine Pranadjaya & Nithya Chandran.
+
 HOW IT WORKS
-Our game, DurianChase, has a main character that is movable with courser keys.
-The moving entities in the game are the main character, the helpers, and the bear.
-The entities that don’t move are the basket, trees, and fruit that spawn randomly.
+	Our game, DurianChase, has a main character that is movable with courser keys.
+	The moving entities in the game are the main character, the helpers, and the bear.
+	The entities that don’t move are the basket, trees, and fruit that spawn randomly.
 
 The objective of DurianChase is to collect as many durian fruits, all while avoiding getting eaten by the bear.
 
