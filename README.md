@@ -19,7 +19,7 @@ A maximum of 10 fruits can be shown on the screen at once, and fruits are random
 Again, the goal of this game is to collect as many durians as you can. If the bear gets to you, it’s game over and there will be text that shows the final amount of fruits you collected.
 
 
-##### DESIGN
+#### DESIGN
 * We used Singleton for the main character since there can only be one instance of the main character.
 * We also used implemented the Factory Design method by creating an EntityFactory class to simplify the creation of all of the entities.
 * The Bear moves using a new pathing algorithm that chooses the best path using the shortest distance of the entity to target.
